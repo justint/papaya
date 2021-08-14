@@ -1,0 +1,29 @@
+{% import "macros/page.html" as page_macros %}
+{% extends "base.html" %}
+
+{% block title %}Projects - {{ config.title }}{% endblock title %}
+
+{% block content %}
+<main id="main" tabindex="-1">
+    {% set section = get_section(path="projects/_index.md") %}
+    {% set project_categories = load_data(path="content/projects/categories.json") %}
+
+    {% for category, tag in project_categories %}
+        <h1>{{ category }}</h1>
+        {% for page in section.pages %}
+            {% if page.taxonomies.categories is containing(tag) %}
+                {{ page_macros::project_listing(page=page) }}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+
+    <h1>Other</h1>
+    {% for page in section.pages %}
+    {% if page.taxonomies.categories | length == 0 %}
+    {{ page_macros::project_listing(page=page) }}
+    {% endif %}
+    {% endfor %}
+
+</main>
+{% endblock content %}

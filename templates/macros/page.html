@@ -1,0 +1,127 @@
+<!-- page listing macros -->
+{% macro page_info(page) %}
+    <div class="article-info">
+        {% if page.date %}
+        {% set reading_time = "◦ " ~ page.reading_time ~ " min" %}
+        <div class="article-date">{{ page.date | date(format=config.extra.papaya_date_format) }} {{ reading_time }} ◦ </div>
+        {% endif %}
+        <div class="article-taxonomies">
+            {% if page.taxonomies.categories %}
+                <ul class="article-categories">
+                    {% for cat in page.taxonomies.categories %}
+                    <li><a href="{{ get_taxonomy_url(kind="categories", name=cat) | safe }}">{{ cat }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if page.taxonomies.tags %}
+                <ul class="article-tags">
+                    {% for tag in page.taxonomies.tags %}
+                    <li><a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">#{{ tag }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro page_info %}
+
+{% macro page_listing(page) %}
+    <article class="post-list">
+        <a href="{{ page.permalink }}">
+            <header>
+                <h3>
+                    {{ page.title }}
+                </h3>
+            </header>
+
+            {% if page.summary %}
+            <div class="content post-summary">
+                {{ page.summary | markdown | safe }}
+            </div>
+            {% endif %}
+        </a>
+        
+        {{ self::page_info(page=page) }}
+    </article>
+{% endmacro page_listing %}
+
+{% macro page_pagination(paginator) %}
+    <div class="pagination">
+        <div class="left pagination-item {% if not paginator.previous %}disabled{% endif %}">
+            {% if paginator.previous %}
+            <a href="{{ paginator.previous }}">To newer posts</a>
+            {% endif %}
+        </div>
+        <div class="right pagination-item {% if not paginator.next %}disabled{% endif %}">
+            {% if paginator.next %}
+            <a href="{{ paginator.next }}">To older posts</a>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro page_pagination %}
+
+<!-- project listing macros -->
+{% macro project_listing(page) %}
+<article class="post-list">
+{#    {% if page.extra.featured_image %}
+    <a href="{{ page.permalink }}"><img src="{{ page.permalink }}/{{ page.extra.featured_image }}" alt="{% if page.extra.featured_image_alt %}{{ page.extra.featured_image_alt }}{% else %}{{ page.title }}{% endif %}"/></a>
+    {% endif %}
+#}
+    <a href="{{ page.permalink }}">
+        <header>
+            <h3>
+                {{ page.title }}
+            </h3>
+        </header>
+
+        {% if page.summary %}
+        <div class="content post-summary">
+            {{ page.summary | markdown | safe }}
+        </div>
+        {% endif %}
+    </a>
+    {{ self::project_info(page=page) }}
+</article>
+{% endmacro page_listing %}
+
+{% macro project_info(page) %}
+<div class="article-info">
+    {% if page.date %}
+    {% set reading_time = "◦ " ~ page.reading_time ~ " min" %}
+    <div class="article-date">{{ page.date | date(format=config.extra.papaya_date_format) }} {{ reading_time }}</div>
+    {% endif %}
+    <div class="article-taxonomies">
+        {% if page.taxonomies.categories %}
+        ◦
+        <ul class="article-categories">
+            {% for cat in page.taxonomies.categories %}
+            <li><a href="{{ get_taxonomy_url(kind="categories", name=cat) | safe }}">{{ cat }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% if page.taxonomies.tags %}
+        <ul class="article-tags">
+            {% for tag in page.taxonomies.tags %}
+            <li><a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">#{{ tag }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    {% if get_env(name=config.extra.env, default="stage") == "prod" and page.extra.repo_path %}
+    {% set response = load_data(url="https://api.github.com/repos/" ~ page.extra.repo_path, format="json") %}
+    <div class="article-github"> ◦
+        <a href="{{ "https://www.github.com/" ~ page.extra.repo_path }}">
+        <span class="icon is-large">
+          <i class="fa fas fa-star"></i>
+        </span>
+        {{ response.stargazers_count }}
+        {% if response.forks_count > 0 %}
+        <span class="icon is-large">
+          <i class="fa fas fa-code-branch"></i>
+        </span>
+        {{ response.forks_count }}
+        {% endif %}
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endmacro project_info %}

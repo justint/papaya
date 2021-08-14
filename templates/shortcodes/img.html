@@ -1,0 +1,26 @@
+{# {{ img(path="", alt="", class="", caption="", extended_width_pct=1.3) }} #}
+
+{# container_width = (pixel size, px) * (.container's max-width) #}
+{% set container_width = 16 * 42 %}
+
+{# figure_width = container_width - (figure margin_blocks) #}
+{% set figure_width = container_width - (40 * 2) %}
+
+{% if extended_width_pct %}
+    {% if extended_width_pct == -1 %}
+        {# adjust extended width to container width #}
+        {% set extended_width_pct = 0.042 %}
+    {% endif %}
+    {% set _width = config.extra.images.max_width - figure_width %}
+    {% set extended_width = (extended_width_pct * _width + figure_width) | round | int %}
+    {% if extended_width > config.extra.images.max_width %}
+        {% set extended_width = config.extra.images.max_width %}
+    {% endif %}
+    {% set resized_image = resize_image(path=path, width=extended_width, op="fit_width") %}
+{% else %}
+    {% set resized_image = resize_image(path=path, width=figure_width, op="fit_width") %}
+{% endif %}
+<figure {% if extended_width_pct %}class="extended-figure"{% endif %}>
+    <img src="{{ resized_image.url }}" class="{% if class %}{{class}}{% endif %}" {% if alt %}alt="{{alt}}"{% endif %}/>
+    {% if caption %}<figcaption>{{ caption | safe }}</figcaption>{% endif %}
+</figure>

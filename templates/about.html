@@ -1,0 +1,27 @@
+{% import "macros/page.html" as page_macros %}
+{% extends "base.html" %}
+
+{% block title %}About {{config.extra.ogp.first_name}} {{config.extra.ogp.last_name}}{% endblock title %}
+
+{% block ogp_head %}
+    <meta property="og:title" content="About {{config.extra.ogp.first_name}} {{config.extra.ogp.last_name}}">
+    <meta property="og:type" content="profile">
+    <meta property="og:locale" content="{{ config.extra.ogp.locale }}">
+    <meta property="og:url" content="{{ page.permalink | safe }}">
+    <meta property="og:image" content="{{ get_url(path="/about/me.jpg") | safe }}">
+    <meta property="profile:first_name" content="{{ config.extra.ogp.first_name }}">
+    <meta property="profile:last_name" content="{{ config.extra.ogp.last_name }}">
+    <meta property="profile:gender" content="{{ config.extra.ogp.gender }}">
+    <meta property="profile:username" content="{{ config.extra.ogp.username }}">
+{% endblock %}
+
+{% block content %}
+<article class="post">
+        <header>
+            <h1>{{ page.title }}</h1>
+        </header>
+        <div class="content">
+            {{ page.content | safe }}
+        </div>
+</article>
+{% endblock content %}

@@ -1,0 +1,63 @@
+{% import "macros/social.html" as social_macros %}
+
+<!DOCTYPE html>
+<html lang="{% if lang %}{{ lang }}{% else %}en{% endif %}" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    <meta name="description" content="{{ config.description }}">
+
+    <link rel="stylesheet" href="{{ get_url(path="main.css", trailing_slash=false) }}">
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></noscript>
+
+    {% if config.generate_feed %}
+    <link rel="alternate" type={% if config.feed_filename == "atom.xml" %}"application/atom+xml"{% else %}"application/rss+xml"{% endif %} title="RSS" href="{{ get_url(path=config.feed_filename) | safe }}">
+    {% endif %}
+
+    {% block ogp_head %}
+    <meta property="og:title" content="{{ config.title }}">
+    <meta property="og:type" content="website">
+    {% endblock ogp_head %}
+
+    {% block extra_head %}
+    {% endblock extra_head %}
+</head>
+<body>
+<div class="container">
+    {% block header %}
+    <header>
+        <h1 class="site-header">
+            <a href="{{ config.base_url }}">{{ config.title }}</a>
+        </h1>
+        <nav>
+            <ul>
+            {% block nav_bar %}
+            {% for menu_link in config.extra.menu_links %}
+            {% set link_url = menu_link.url | replace(from="$BASE_URL", to=config.base_url) %}
+            <li><a {% if current_url and current_url == link_url %}class="active"{% endif %} href="{{ link_url }}">{{menu_link.name}}</a></li>
+            {% endfor %}
+            {% endblock nav_bar %}
+            </ul>
+        </nav>
+    </header>
+    {% endblock header %}
+    {% block content %}
+    {% endblock content %}
+    <footer>
+        <p>
+            {{ social_macros:: social_links( social_config=config.extra.social) }}
+        </p>
+        <p>
+            {% block footer %}
+            {% endblock footer %}
+        </p>
+    </footer>
+</div>
+</body>
+</html>

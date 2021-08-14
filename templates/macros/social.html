@@ -1,0 +1,43 @@
+{% macro social_links(social_config) %}
+<span class="icon-text">
+  {% if social_config.twitter %}
+  <a href="https://twitter.com/{{ social_config.twitter }}" aria-label="Open {{ social_config.twitter }} Twitter" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true" title="Twitter"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.github %}
+  <a href="https://github.com/{{ social_config.github }}" aria-label="Open {{ social_config.github }} GitHub" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-github fa-lg" aria-hidden="true" title="GitHub"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.linkedin %}
+  <a href="https://www.linkedin.com/in/{{ social_config.linkedin }}" aria-label="Open {{ social_config.linkedin }} LinkedIn" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true" title="LinkedIn"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.email %}
+  <a href="mailto:{{ social_config.email }}" aria-label="Email {{ social_config.email }}" target="_blank">
+    <span class="icon is-large">
+      <i class="far fa-envelope fa-lg" aria-hidden="true" title="email"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if config.generate_feed %}
+  <a href="{{ config.base_url }}/{{ config.feed_filename }}" aria-label="Open atom xml feed" target="_blank">
+    <span class="icon is-large">
+      <i class="fas fa-rss fa-lg" aria-hidden="true" title="atom xml feed"></i>
+    </span>
+  </a>
+  {% endif %}
+</span>
+{% endmacro %}

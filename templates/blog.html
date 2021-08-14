@@ -1,0 +1,23 @@
+{% import "macros/page.html" as page_macros %}
+{% extends "base.html" %}
+
+{% block title %}Blog - {{ config.title }}{% endblock title %}
+
+
+{% block content %}
+<main id="main" tabindex="-1">
+    <p>
+        View by: <a href="/tags">tags</a>
+    </p>
+    {% if paginator.pages %}
+    {% for page in paginator.pages %}
+    {{ page_macros::page_listing(page=page) }}
+    {% endfor %}
+    {{ page_macros::page_pagination(paginator=paginator) }}
+    {% else %}
+    {% for page in section.pages %}
+    {{ page_macros::page_listing(page=page) }}
+    {% endfor %}
+    {% endif %}
+</main>
+{% endblock content %}

@@ -1,0 +1,84 @@
+{% import "macros/page.html" as page_macros %}
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} - {{ config.title }}{% endblock %}
+
+{% block ogp_head %}
+    {% if config.extras.ogp.locale %}
+    <meta property="og:locale" content="{{ config.extras.ogp.locale }}">
+    {% endif %}
+    <meta property="og:title" content="{{ page.title }}">
+    {% if page.components is containing("projects") or page.components is containing("blog") %}
+    <meta property="og:type" content="article">
+    <meta property="article:author" content="{{ get_url(path='@/pages/about/index.md') | safe }}">
+    <meta property="article:published_time" content="{{ page.date }}">
+    {% if page.taxonomies.tags %}
+    {% for tag in page.taxonomies.tags %}
+    <meta property="article:tag" content="{{ tag }}">
+    {% endfor %}
+    {% endif %}
+    {% if page.updated %}
+    <meta property="article:modified_time" content="{{ page.updated }}">
+    {% endif %}
+    {% else %}
+    <meta property="og:type" content="website">
+    {% endif %}
+    <meta property="og:url" content="{{ page.permalink | safe }}">
+    {% if page.extra.featured_image %}
+    {% set page_permalink = page.permalink | safe %}
+    <meta property="og:image" content="{{ page_permalink ~ page.extra.featured_image }}">
+    {% if page.extra.featured_image_alt %}
+    <meta property="og:image:alt" content="{{ page.extra.featured_image_alt }}">
+    {% endif %}
+    {% endif %}
+    {% if page.summary %}
+    <meta property="og:description" content="{{ page.summary | striptags }}">
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<article class="post">
+    {% if page.extra.featured_image %}
+        {% set image_path = page.components | join(sep="/") | replace(from="-", to="_") %}
+        {% set image_path = image_path ~ "/" ~ page.extra.featured_image %}
+        {% if page.extra.featured_image_extended %}
+            {% set resized_featured_image = resize_image(path=image_path, width=config.extra.images.max_width, op="fit_width") %}
+        {% else %}
+            {# container_width = (pixel size, px) * (.container's max-width) #}
+            {% set container_width = 16 * 42 %}
+            {% set resized_featured_image = resize_image(path=image_path, width=container_width, op="fit_width") %}
+        {% endif %}
+    <img src="{{ resized_featured_image.url }}" class="{% if page.extra.featured_image_extended %}extended-img{% endif %}" alt="{% if page.extra.featured_image_alt %}{{ page.extra.featured_image_alt }}{% else %}{{ page.title }}{% endif %}"/>
+    {% endif %}
+    {#
+        Currently there's no way to get the page content without the summary included;
+        below is a bit of a hack to separate out the two so that the summary can be
+        placed into a h2 below the page title.
+    #}
+    {% if page.summary %}
+        {% set page_contents = page.content | replace(from=page.summary, to="") %}
+        <header>
+            <h1>{{ page.title }}</h1>
+            <h2 class="post-summary">{{ page.summary | striptags }}</h2>
+        </header>
+        {% if page.components is containing("projects") %}
+        {{ page_macros::project_info(page=page) }}
+        {% else %}
+        {{ page_macros::page_info(page=page) }}
+        {% endif %}
+        <div class="content">
+            {{ page_contents | safe }}
+        </div>
+    {% else %}
+        <header>
+            <h1>{{ page.title }}</h1>
+        </header>
+        {{ page_macros::page_info(page=page) }}
+        <div class="content">
+            {{ page.content | safe }}
+        </div>
+    {% endif %}
+</article>
+
+{% endblock content %}
