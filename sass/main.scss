@@ -72,6 +72,12 @@ main {
     margin-block-end: 0;
     border-bottom: thin dotted $border-color;
 }
+.index-banner {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: 0 46%;
+}
 
 /* Headers */
 h1 {
