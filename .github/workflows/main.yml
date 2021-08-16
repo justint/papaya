@@ -2,14 +2,12 @@ on: push
 name: Build and deploy GH Pages
 jobs:
   build:
+    name: shalzz/zola-deploy-action
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
-      - name: build_and_deploy
-        uses: shalzz/zola-deploy-action@v0.13.0
-        env:
-          # Target branch
-          PAGES_BRANCH: gh-pages
-          # Provide personal access token
-          TOKEN: ${{ secrets.TOKEN }}
+    - uses: actions/checkout@master
+    - name: shalzz/zola-deploy-action
+      uses: shalzz/zola-deploy-action@master
+      env:
+        PAGES_BRANCH: gh-pages
+        TOKEN: ${{ secrets.TOKEN }}
