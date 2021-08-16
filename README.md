@@ -2,6 +2,8 @@
 
 A clean [Zola](https://getzola.org) theme for blogging and projects, forked from [Anpu](https://github.com/zbrox/anpu-zola-theme).
 
+**Demo site**: https://justintennant.me/papaya/
+
 ![index](pics/index.png)
 
 ![projects](pics/projects.png)
