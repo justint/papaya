@@ -1,11 +1,11 @@
 name = "Papaya"
-description = "A clean blogging theme with projects"
+description = "A clean Zola theme for blogging and projects"
 license = "MIT"
 homepage = "https://github.com/justint/papaya"
 # The minimum version of Zola required
 min_version = "0.14.0"
 # An optional live demo URL
-#demo =
+demo = "https://justintennant.me/papaya"
 
 # Any variable there can be overriden in the end user `config.toml`
 # You don't need to prefix variables by the theme name but as this will
