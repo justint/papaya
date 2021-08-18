@@ -11,3 +11,4 @@ jobs:
       env:
         PAGES_BRANCH: gh-pages
         TOKEN: ${{ secrets.TOKEN }}
+        ZOLA_ENV: prod
