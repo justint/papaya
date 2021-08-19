@@ -20,7 +20,7 @@
             {% for page in section.pages | slice(end=2) %}
             {{ page_macros::project_listing(page=page) }}
             {% endfor %}
-            <p class="read-more"><a href="/projects/">more projects ≫</a></p>
+            <p class="read-more"><a href="projects/">more projects ≫</a></p>
         </section>
         <section class="index-listing">
             <h2>
@@ -30,7 +30,7 @@
             {% for page in section.pages | slice(end=2) %}
             {{ page_macros::page_listing(page=page) }}
             {% endfor %}
-            <p class="read-more"><a href="/blog/">more blog posts ≫</a></p>
+            <p class="read-more"><a href="blog/">more blog posts ≫</a></p>
         </section>
     </section>
 </main>
