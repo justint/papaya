@@ -40,7 +40,7 @@
 
 <article class="post">
     {% if page.extra.featured_image %}
-        {% set image_path = page.components | join(sep="/") | replace(from="-", to="_") %}
+        {% set image_path = page.components | join(sep="/") %}
         {% set image_path = image_path ~ "/" ~ page.extra.featured_image %}
         {% if page.extra.featured_image_extended %}
             {% set resized_featured_image = resize_image(path=image_path, width=config.extra.images.max_width, op="fit_width") %}
