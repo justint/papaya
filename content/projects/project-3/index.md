@@ -17,19 +17,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et blandit est, a
 
 Curabitur eget mauris arcu. Donec lectus massa, feugiat sed accumsan sit amet, rutrum in nisl. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec porta volutpat urna faucibus dapibus. Aenean ac porttitor elit. Mauris quis purus viverra, tempus lorem a, lacinia quam. Ut venenatis risus et ex eleifend, ut viverra erat dapibus. Nullam viverra at erat ac auctor.
 
-{{ img(path="@/projects/project_3/image2.jpg", alt="A very cute leopard gecko.", caption="A very cute leopard gecko. Default sizing.") }}
+{{ img(path="@/projects/project-3/image2.jpg", alt="A very cute leopard gecko.", caption="A very cute leopard gecko. Default sizing.") }}
 
 Quisque non lectus feugiat sem vulputate fringilla sit amet at ipsum. Duis suscipit eget orci malesuada viverra. Morbi dolor est, ultricies quis varius eu, commodo eu magna. Nunc in sapien sed est venenatis scelerisque nec vestibulum est. Donec at sem luctus, volutpat dui eu, sagittis mauris. Mauris ullamcorper mi nec nulla placerat pretium. Aenean aliquam elit vitae ligula pellentesque tincidunt. Morbi porta, velit quis sagittis maximus, nulla velit suscipit dui, vitae molestie nulla massa vitae nibh. Nullam eu ipsum tempus, commodo magna at, tristique dolor.
 
-{{ img(path="@/projects/project_3/image2.jpg", alt="A very cute leopard gecko.", extended_width_pct=0.1, caption="A very cute leopard gecko. extended_width_pct=0.1") }}
+{{ img(path="@/projects/project-3/image2.jpg", alt="A very cute leopard gecko.", extended_width_pct=0.1, caption="A very cute leopard gecko. extended_width_pct=0.1") }}
 
 Vivamus ut nunc sit amet leo gravida dignissim. Suspendisse a ultrices enim. Vestibulum pharetra est nec ligula tempus, eu luctus magna rhoncus. Nam nec porta sem, a vestibulum leo. Aenean fermentum sed felis non pellentesque. Vivamus vehicula augue a lacus posuere ultricies. Proin mattis, sem in tincidunt luctus, mi tortor varius nulla, ut egestas nisl purus ac purus.
 
-{{ img(path="@/projects/project_3/image2.jpg", alt="A very cute leopard gecko.", extended_width_pct=0.2, caption="A very cute leopard gecko. extended_width_pct=0.2") }}
+{{ img(path="@/projects/project-3/image2.jpg", alt="A very cute leopard gecko.", extended_width_pct=0.2, caption="A very cute leopard gecko. extended_width_pct=0.2") }}
 
 Fusce in odio nec odio mollis malesuada. Duis sodales pharetra mollis. Integer in semper dolor, ac luctus magna. Morbi eros erat, varius sed sodales a, semper non nisl. Ut feugiat commodo enim, sit amet pellentesque quam volutpat id. Curabitur quis consequat dolor. Nunc quis metus diam. Sed erat augue, tristique id sem scelerisque, malesuada auctor mauris. Aliquam pellentesque urna id urna pulvinar, ut facilisis metus dapibus. Duis at risus nisi. Sed maximus nulla id lectus semper rutrum. Morbi nec dolor imperdiet, tempus lacus ac, bibendum neque. Curabitur condimentum condimentum ex, vel aliquam nibh semper vel.
 
-{{ img(path="@/projects/project_3/image2.jpg", alt="A very cute leopard gecko.", extended_width_pct=-1, caption="A very cute leopard gecko. extended_width_pct=-1") }}
+{{ img(path="@/projects/project-3/image2.jpg", alt="A very cute leopard gecko.", extended_width_pct=-1, caption="A very cute leopard gecko. extended_width_pct=-1") }}
 
 Nunc et mauris sit amet nulla ultrices interdum. Mauris volutpat eget dui nec accumsan. Ut sed mollis orci. Praesent posuere, velit non placerat luctus, risus nisl consequat nibh, nec vestibulum ligula ante eu ipsum. Proin pulvinar dolor nec metus tempus, at varius ipsum tempus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel urna id ante maximus faucibus non vel orci. Proin metus orci, pretium ac rhoncus ac, ullamcorper sit amet tortor. Pellentesque lobortis ex id ornare tempus.
 
