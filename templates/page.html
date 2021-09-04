@@ -4,8 +4,8 @@
 {% block title %}{{ page.title }} - {{ config.title }}{% endblock %}
 
 {% block ogp_head %}
-    {% if config.extras.ogp.locale %}
-    <meta property="og:locale" content="{{ config.extras.ogp.locale }}">
+    {% if config.extra.ogp.locale %}
+    <meta property="og:locale" content="{{ config.extra.ogp.locale }}">
     {% endif %}
     <meta property="og:title" content="{{ page.title }}">
     {% if page.components is containing("projects") or page.components is containing("blog") %}

@@ -244,7 +244,7 @@ By default, images embedded with the `img` shortcode will be inserted as a `figu
 
 ![Default sized image](pics/img_default.png)
 
-With the `extended_width_pct` argument, we can specify a percentage of how much the image should expand outside its default figure width, up to your maximum configured image width (`config.extras.images.max_width`, 2500px default).
+With the `extended_width_pct` argument, we can specify a percentage of how much the image should expand outside its default figure width, up to your maximum configured image width (`config.extra.images.max_width`, 2500px default).
 
 Here's an example with `extended_width_pct=0.1`:
 
