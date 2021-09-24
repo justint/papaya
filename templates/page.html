@@ -60,7 +60,7 @@
         {% set page_contents = page.content | replace(from=page.summary, to="") %}
         <header>
             <h1>{{ page.title }}</h1>
-            <h2 class="post-summary">{{ page.summary | striptags }}</h2>
+            <h2 class="post-summary">{{ page.summary | striptags | safe }}</h2>
         </header>
         {% if page.components is containing("projects") %}
         {{ page_macros::project_info(page=page) }}
