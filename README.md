@@ -78,10 +78,10 @@ Here are the customizable features of Papaya:
 - [Project categories](#project-categories)
 - [Multilanguage support](#mutilanguage-support)
 - [Custom section and navigation menu links](#custom-section-and-navigation-menu-links)
-- [Post/project date formats](#post-project-date-formats)
-- [Post/project featured images](#post-project-featured-images)
-- [Open Graph Protocol locale/profile information](#open-graph-protocol-locale-profile-information)
-- [Social/contact links](#social-contact-links)
+- [Post/project date formats](#postproject-date-formats)
+- [Post/project featured images](#postproject-featured-images)
+- [Open Graph Protocol locale/profile information](#open-graph-protocol-localeprofile-information)
+- [Social/contact links](#socialcontact-links)
 
 ### Project categories
 
@@ -340,6 +340,30 @@ Example:
 email = "papaya@tiliqua.sp"
 github = "papaya"
 linkedin = "papayatiliqua"
+twitter = ""
+zhihu = ""
+weibo = ""
+bilibili = ""
+```
+
+If you want to add some custom social websites, you can add them to `other`:
+
+Example:
+
+```toml
+[extra.social]
+other = [
+    { name = "BTC", font_awesome = "fa-brands fa-btc", url = "https://www.bitcoin.com/" }
+]
+```
+
+In `font_awesome` you need to write the corresponding font awesome classes, you can find them in [Font Awesome](https://fontawesome.com/). Be carefull, different version of font awesome may include different set of icons, you can change the version of font awesome by changing CDN in `[extra.cdn]` section:
+
+```toml
+[extra]
+
+[extra.cdn]
+font_awesome = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
 ```
 
 ## Image embedding shortcode
