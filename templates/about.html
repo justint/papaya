@@ -1,10 +1,10 @@
 {% import "macros/page.html" as page_macros %}
 {% extends "base.html" %}
 
-{% block title %}About {{config.extra.ogp.first_name}} {{config.extra.ogp.last_name}}{% endblock title %}
+{% block title %}{{ trans(key="about", lang=lang) }} {{config.extra.ogp.first_name}} {{config.extra.ogp.last_name}}{% endblock title %}
 
 {% block ogp_head %}
-    <meta property="og:title" content="About {{config.extra.ogp.first_name}} {{config.extra.ogp.last_name}}">
+    <meta property="og:title" content="{{ trans(key="about", lang=lang) }} {{config.extra.ogp.first_name}} {{config.extra.ogp.last_name}}">
     <meta property="og:type" content="profile">
     <meta property="og:locale" content="{{ config.extra.ogp.locale }}">
     <meta property="og:url" content="{{ page.permalink | safe }}">

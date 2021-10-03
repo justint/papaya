@@ -15,6 +15,8 @@ A clean [Zola](https://getzola.org) theme for blogging and projects, forked from
 - Blog posts
 - Project pages
 - Categories and tags
+- Multilanguage support
+- Customizable sections
 - Featured images for posts/pages
 - Smart image embedding shortcode (`{{ img() }}`)
 - GitHub repository star/fork counts
@@ -44,8 +46,9 @@ A clean [Zola](https://getzola.org) theme for blogging and projects, forked from
         { name = "tags" },
     ]
     ```
+
 4. In your `content` directory, add new `blog` and `projects` directories. Copy the `_index.md` file from Papaya's `content/blog` into your `content/blog`, and the `_index.md` and `categories.json` files from Papaya's `content/projects` into your `content/projects`.
-   
+ 
    Your `content` directory structure should look like this:
    ```
    content
@@ -55,7 +58,7 @@ A clean [Zola](https://getzola.org) theme for blogging and projects, forked from
       └── _index.md
       └── categories.json
    ```
-   
+ 
 5. _(optional)_ To enable GitHub repository stars/fork counts (disabled by default to avoid hitting API rate limits), set the `$ZOLA_ENV` environment variable to `prod` prior to your `zola serve`/`zola build` execution.
    
    For csh/tsch:
@@ -72,64 +75,13 @@ A clean [Zola](https://getzola.org) theme for blogging and projects, forked from
 
 Here are the customizable features of Papaya: 
 
-- Navigation menu links
-- Post/project date formats
-- Post/project featured images
-- Project categories
-- Open Graph Protocol locale/profile information
-- Social/contact links
-
-### Navigation menu links
-
-In your `config.toml` under the `[extra]` section you need to set the `papaya_menu_links` list.
-
-Example:
-
-```toml
-[extra]
-papaya_menu_links = [
-    { url = "$BASE_URL/about/", name = "About" },
-]
-```
-
-If you include `$BASE_URL` in the URL of a link it will be replaced with the base URL of your site.
-
-### Post/project date formats
-
-In your `config.toml` under the `[extra]` section you need to set the `papaya_date_format` value.
-
-Example:
-
-```toml
-[extra]
-papaya_date_format = "%e %B %Y"
-```
-
-The formatting uses the standard `date` filter in Tera. The date format options you can use are listed in the [chrono crate documentation](https://tera.netlify.app/docs/#date).
-
-### Post/project featured images
-
-Posts and projects can have featured images which display at the top of their page before the page contents.
-
-```toml
-[extra]
-featured_image = "image.jpg"
-featured_image_alt = "A lodge overlooks a forested mountain range."
-```
-
-![Featured image](pics/featured_image.png)
-
-Featured images can also be extended to the full width of the viewport:
-
-```toml
-[extra]
-featured_image = "image.jpg"
-featured_image_alt = "A lodge overlooks a forested mountain range."
-featured_image_extended = true
-```
-
-![Featured image, extended](pics/featured_image_extended.png)
-
+- [Project categories](#project-categories)
+- [Multilanguage support](#mutilanguage-support)
+- [Custom section and navigation menu links](#custom-section-and-navigation-menu-links)
+- [Post/project date formats](#post-project-date-formats)
+- [Post/project featured images](#post-project-featured-images)
+- [Open Graph Protocol locale/profile information](#open-graph-protocol-locale-profile-information)
+- [Social/contact links](#social-contact-links)
 
 ### Project categories
 
@@ -158,6 +110,7 @@ Example `categories.json`:
 ```
 
 Example project page front matter:
+
 ```toml
 title = "Example software project"
 date = 2021-08-11
@@ -167,6 +120,195 @@ categories = ["software"]
 ```
 
 The example project page above would be grouped into & displayed within the "Software" category of your projects page.
+
+### Mutilanguage support
+
+Currently Zola has a basic i18n support, you can see this at [zola doc](https://www.getzola.org/documentation/content/multilingual/).
+
+Doing the follows to write a multilanguage site (English and Chinese in this example):
+
+1. Add `default_language` configuration, `[languages.zh]` and `[languages.en] section in your `config.toml`:
+
+    ```toml
+    default_language = "en"
+
+    [languages]
+
+    [languages.en]
+
+    [languages.zh]
+    title = "中文标题"
+    description = "中文描述"
+    ```
+
+    Under `[languages.zh]` section you can override default configurations like title, description.
+
+2. Add translations of all keywords in `[langauges.zh.translations]` and `languages.en.translations]` section:
+
+    ```toml
+    [languages]
+
+    [languages.en]
+
+    [languages.en.translations]
+    projects = "Projects"
+    blog = "Blog"
+    about = "About"
+    recent_projects = "Recent Projects"
+    more_projects = "More Projects"
+    recent_blog_posts = "Recent Blog Posts"
+    more_blog_posts = "More blog posts"
+    ...
+
+    [languages.zh]
+
+    [languages.zh.translations]
+    projects = "项目"
+    blog = "博文"
+    about = "关于"
+    recent_projects = "近期项目"
+    more_projects = "更多项目"
+    recent_blog_posts = "近期博文"
+    more_blog_posts = "更多博文"
+    ...
+    ```
+
+3. Add `_index.zh.md` to every section, e.g., add `content/blog/_index.zh.md` and `content/projects/_index.zh.md`. `content/about` is not a zola section, it is just a page, doesn't contain any other page, so it didn't contain a `_index.md`, instead it contains a `index.md` (see [zola doc](https://www.getzola.org/documentation/content/page/)), so if you want to translate this page, you should add a `index.zh.md`, but this is not necessary.
+4. Add file `content/categories.zh.json`, for example:
+
+    ```json
+    {
+        "软件": "software",
+        "电影": "film"
+    }
+    ```
+
+Now you will have a blog with both English and Chinese! Since `default_language` in `config.toml` is set to "en", by visiting `base_url` you will see the English version of this blog. You can visit the Chinese version by visiting `base_url/zh`.
+
+A page (post or project) can be avaiable in both language or only in one language, and it's not necessary that a page is avaiable in the default language.
+
+### Custom section and navigation menu links
+
+A section is created whenever a directory (or subdirectory) in the content section contains an `_index.md` file, see [zola docs](https://www.getzola.org/documentation/content/section/).
+
+Papaya has three sections by default: `projects`, `blog` and `about` (actually `about` is not a zola section, because it is a single page). You can add additional sections or change section names. For example, you can add a section called **Diary**, in order to add this section, you need to:
+
+1. Create a directory called `diary` in `content/`
+2. Create `_index.md` inside `content/diary`, for example:
+
+    ```markdown
+    +++
+    title = "Diary"
+    render = true
+    # diary will use blog.html for its template
+    template = "blog.html"
+    +++
+    ```
+
+3. In your `config.toml` under the `[extra]` section adds the following item to key `sections`:
+
+    ```toml
+    [extra]
+    sections = [
+        ...
+        { name = "diary", show_recent = true, recent_items = 3, recent_trans_key = "recent_diary", more_trans_key = "more_diary" }
+    ]
+    ```
+
+4. In `config.toml` under the `[languages.<code>.translations]` section adds the following item:
+
+    ```toml
+    [languages]
+
+    [languages.en]
+
+    [languages.en.translations]
+    diary = "Diary"
+    recent_diary = "Recent Diaries"
+    more_diary = "More Diaries"
+
+    [languages.zh]
+
+    [languages.zh.translations]
+    diary = "日记"
+    recent_diary = "近期日记"
+    more_diary = "更多日记"
+    ```
+
+After that you should see `Diary` appeared in the navigation menu.
+
+If you want to add a custom link in the navigation menu, you can add a special section in the `sections` configuration, for example:
+
+```toml
+[extra]
+sections = [
+    ...
+    { name = "tag", url = "$LANG_BASE_URL/tags" }
+]
+```
+
+As the same with the diary example, the `name` attribute of section specifies the corresponding translation key:
+
+```toml
+[languages]
+
+[languages.en]
+
+[languages.en.translations]
+tag = "Tag"
+
+[languages.zh]
+
+[langauges.zh.translations]
+tag = "标签"
+```
+
+If you include `$BASE_URL` in the URL of a link it will be replaced with the base URL of your site, and `$LANG_BASE_URL` will be replaced with the language-specific base URL of your site.
+
+### Post/project date formats
+
+You can have different date formats in different language. You need to set the `date_format` value in every langauge's translation section.
+
+Example:
+
+```toml
+[languages]
+
+[languages.en]
+
+[languages.en.translations]
+date_format = "%e %B %Y"
+
+[languages.zh]
+
+[languages.zh.translations]
+date_format = "%Y 年 %m 月 %d 日"
+```
+
+The formatting uses the standard `date` filter in Tera. The date format options you can use are listed in the [chrono crate documentation](https://tera.netlify.app/docs/#date).
+
+### Post/project featured images
+
+Posts and projects can have featured images which display at the top of their page before the page contents.
+
+```toml
+[extra]
+featured_image = "image.jpg"
+featured_image_alt = "A lodge overlooks a forested mountain range."
+```
+
+![Featured image](pics/featured_image.png)
+
+Featured images can also be extended to the full width of the viewport:
+
+```toml
+[extra]
+featured_image = "image.jpg"
+featured_image_alt = "A lodge overlooks a forested mountain range."
+featured_image_extended = true
+```
+
+![Featured image, extended](pics/featured_image_extended.png)
 
 ### Open Graph Protocol locale/profile information
 

@@ -1,37 +1,99 @@
 # The URL the site will be built for
 base_url = "https://justintennant.me/papaya"
-
-# Whether to automatically compile all Sass files in the sass directory
-compile_sass = true
-
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_code = true
-
-# Whether to build a search index to be used later on by a JavaScript library
-build_search_index = false
-
 title = "Papaya"
 description = "A clean Zola theme for blogging and projects"
+default_language = "en"
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
 generate_feed = true
-
 taxonomies = [
-    {name = "tags", rss = true},
-    {name = "categories", rss = true},
+    { name = "tags", rss = true },
+    { name = "categories", rss = true },
 ]
+
+[markdown]
+# When set to "true", all code blocks are highlighted.
+highlight_code = true
+# The theme to use for code highlighting.
+# See below for list of allowed values.
+highlight_theme = "material-light"
+
+[languages]
+
+[languages.en]
+title = "Papaya"
+description = "A clean Zola theme for blogging and projects"
+
+[languages.en.translations]
+projects = "Projects"
+blog = "Blog"
+about = "About"
+recent_projects = "Recent Projects"
+more_projects = "More Projects"
+recent_blog_posts = "Recent Blog Posts"
+more_blog_posts = "More blog posts"
+tag = "Tag"
+tags = "Tags"
+to_all_tags = "To all tags"
+category = "Category"
+categories = "Categories"
+to_all_categories = "To all categories"
+view_by = "View by"
+other = "Other"
+minute = "min"
+prev_page = "To newer posts"
+next_page = "To older posts"
+# Customize your post date format. See: https://tera.netlify.app/docs/#date
+date_format = "%B %e, %Y"
+
+[languages.zh]
+title = "帕帕雅"
+description = "一个清新的 Zola 博客与项目模板"
+base_url = "https://justintennant.me/papaya/zh"
+taxonomies = [
+    { name = "tags", rss = true },
+    { name = "categories", rss = true },
+]
+
+[languages.zh.translations]
+projects = "项目"
+blog = "博文"
+about = "关于"
+recent_projects = "近期项目"
+more_projects = "更多项目"
+recent_blog_posts = "近期博文"
+more_blog_posts = "更多博文"
+tag = "标签"
+tags = "所有标签"
+to_all_tags = "所有标签"
+category = "类别"
+categories = "所有类别"
+to_all_categories = "所有类别"
+view_by = "查看方式"
+other = "其他"
+minute = "分钟"
+prev_page = "上一页"
+next_page = "下一页"
+# Customize your post date format. See: https://tera.netlify.app/docs/#date
+date_format = "%Y 年 %m 月 %d 日"
 
 [extra]
 # Development environment. Used by the page macros to load remote content only when in "prod" mode
 env = "ZOLA_ENV"
-
-# Customize your post date format. See: https://tera.netlify.app/docs/#date
-papaya_date_format="%B %e, %Y"
-
-# Top navigation menu links
-menu_links = [
-    { url = "$BASE_URL/projects/", name = "Projects" },
-    { url = "$BASE_URL/blog/", name = "Blog" },
-    { url = "$BASE_URL/about/", name = "About" }
+# List of zola sections. Also used to construct navigation bar.
+# 1. The name, recent_trans_key, more_trans_key attributes contain the corresponding
+#    translation items in the [languages.<code>.translations] table.
+# 2. The name and show_recent attributes are required if it is a zola section;
+#    The name and url attributes are required if it is just a link.
+# 3. The order here determines the order of the top navigation bar.
+sections = [
+    { name = "projects", show_recent = true, recent_items = 3, recent_trans_key = "recent_projects", more_trans_key = "more_projects" },
+    { name = "blog", show_recent = true, recent_items = 3, recent_trans_key = "recent_blog_posts", more_trans_key = "more_blog_posts" },
+    # tag is not a zola section, it's just a link.
+    { name = "tag", url = "$LANG_BASE_URL/tags" },
+    { name = "about", show_recent = false },
 ]
 
 [extra.images]
@@ -49,3 +111,7 @@ username = "tiliquasp"
 # Footer social links; full options listed in macros/social.html
 [extra.social]
 email = "papaya@tiliqua.sp"
+
+# CDN links
+[extra.cdn]
+font_awesome = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"

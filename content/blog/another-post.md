@@ -1,6 +1,6 @@
 +++
 title = "More on Skinks"
-date = 2020-01-06
+date = 2021-10-02
 
 [taxonomies]
 tags = ["other"]

@@ -10,7 +10,7 @@
     <meta property="og:title" content="{{ page.title }}">
     {% if page.components is containing("projects") or page.components is containing("blog") %}
     <meta property="og:type" content="article">
-    <meta property="article:author" content="{{ get_url(path='@/pages/about/index.md') | safe }}">
+    <meta property="article:author" content="{{ get_url(path='@/about/index.md') | safe }}">
     <meta property="article:published_time" content="{{ page.date }}">
     {% if page.taxonomies.tags %}
     {% for tag in page.taxonomies.tags %}
