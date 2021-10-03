@@ -357,7 +357,7 @@ other = [
 ]
 ```
 
-In `font_awesome` you need to write the corresponding font awesome classes, you can find them in [Font Awesome](https://fontawesome.com/). Be carefull, different version of font awesome may include different set of icons, you can change the version of font awesome by changing CDN in `[extra.cdn]` section:
+`font_awesome` attribute specified the font awesome classes, you can find them in [Font Awesome](https://fontawesome.com/). Be carefull, different version of font awesome may include different sets of icons, you can change the version of font awesome by changing CDN in `[extra.cdn]` section:
 
 ```toml
 [extra]
