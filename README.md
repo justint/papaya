@@ -374,6 +374,8 @@ Included with Papaya is a shortcode for embedding images into your posts:
 img(path, alt, caption, class, extended_width_pct)
 ```
 
+You can use `./<image-path>` to specify the relative path of image which is relative to current markdown file.
+
 ### Arguments
 
 - `path`: The path to the image relative to the `content` directory in the [directory structure](https://www.getzola.org/documentation/getting-started/directory-structure/).

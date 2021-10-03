@@ -6,6 +6,14 @@
 {# figure_width = container_width - (figure margin_blocks) #}
 {% set figure_width = container_width - (40 * 2) %}
 
+{% if path is starting_with("./") %}
+    {% set relative_path = page.relative_path | split(pat="/") | slice(end=-1) | join(sep="/") %}
+    {% set img_path = path | trim_start_matches(pat="./") %}
+    {% set img_path = relative_path ~ "/" ~ img_path %}
+{% else %}
+    {% set img_path = path %}
+{% endif %}
+
 {% if extended_width_pct %}
     {% if extended_width_pct == -1 %}
         {# adjust extended width to container width #}
@@ -16,9 +24,9 @@
     {% if extended_width > config.extra.images.max_width %}
         {% set extended_width = config.extra.images.max_width %}
     {% endif %}
-    {% set resized_image = resize_image(path=path, width=extended_width, op="fit_width") %}
+    {% set resized_image = resize_image(path=img_path, width=extended_width, op="fit_width") %}
 {% else %}
-    {% set resized_image = resize_image(path=path, width=figure_width, op="fit_width") %}
+    {% set resized_image = resize_image(path=img_path, width=figure_width, op="fit_width") %}
 {% endif %}
 <figure {% if extended_width_pct %}class="extended-figure"{% endif %}>
     <img src="{{ resized_image.url }}" class="{% if class %}{{class}}{% endif %}" {% if alt %}alt="{{alt}}"{% endif %}/>
