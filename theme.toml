@@ -14,7 +14,7 @@ demo = "https://justintennant.me/papaya"
 [extra]
 env = "$ZOLA_ENV"
 papaya_date_format = "%e %B %Y"
-menu_links = []
+papaya_menu_links = []
 
 [extra.images]
 
