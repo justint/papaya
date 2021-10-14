@@ -28,7 +28,7 @@ env = "ZOLA_ENV"
 papaya_date_format="%B %e, %Y"
 
 # Top navigation menu links
-menu_links = [
+papaya_menu_links = [
     { url = "$BASE_URL/projects/", name = "Projects" },
     { url = "$BASE_URL/blog/", name = "Blog" },
     { url = "$BASE_URL/about/", name = "About" }
