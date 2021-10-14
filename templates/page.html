@@ -74,9 +74,11 @@
         </header>
         {{ page_macros::page_info(page=page) }}
     {% endif %}
+    {% block page_contents %}
     <div class="content">
         {{ page_contents | safe }}
     </div>
+    {% endblock page_contents %}
 </article>
 
 {% endblock content %}
