@@ -6,9 +6,11 @@
 
 {% block content %}
 <main id="main" tabindex="-1">
+    {% block heading %}
     <p>
         View by: <a href="/tags">tags</a>
     </p>
+    {% endblock heading %}
     {% if paginator.pages %}
     {% for page in paginator.pages %}
     {{ page_macros::page_listing(page=page) }}
