@@ -67,18 +67,18 @@
         {% else %}
         {{ page_macros::page_info(page=page) }}
         {% endif %}
-        <div class="content">
-            {{ page_contents | safe }}
-        </div>
     {% else %}
+        {% set page_contents = page.content %}
         <header>
             <h1>{{ page.title }}</h1>
         </header>
         {{ page_macros::page_info(page=page) }}
-        <div class="content">
-            {{ page.content | safe }}
-        </div>
     {% endif %}
+    {% block page_contents %}
+    <div class="content">
+        {{ page_contents | safe }}
+    </div>
+    {% endblock page_contents %}
 </article>
 
 {% endblock content %}
