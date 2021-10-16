@@ -5,6 +5,7 @@
 
 {% block content %}
 <main id="main" tabindex="-1">
+    {% block heading %}
     <p>
         {% if section.relative_path is ending_with("." ~ lang ~ ".md") %}
             {% set tags_url = "/" ~ lang ~ "/tags" %}
@@ -13,6 +14,7 @@
         {% endif %}
         {{ trans(key="view_by", lang=lang) }}: <a href={{ tags_url }}>{{ trans(key="tags", lang=lang) }}</a>
     </p>
+    {% endblock heading %}
     {% if paginator.pages %}
         {% for page in paginator.pages %}
             {{ page_macros::page_listing(page=page) }}

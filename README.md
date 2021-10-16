@@ -371,7 +371,7 @@ font_awesome = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/
 Included with Papaya is a shortcode for embedding images into your posts:
 
 ```
-img(path, alt, caption, class, extended_width_pct)
+img(path, alt, caption, class, extended_width_pct, quality)
 ```
 
 You can use `./<image-path>` to specify the relative path of image which is relative to current markdown file.
@@ -382,6 +382,7 @@ You can use `./<image-path>` to specify the relative path of image which is rela
 - `alt`: _(optional)_ The alternate text for the image.
 - `caption`: _(optional)_ A caption for the image. Text/HTML/Tera templates supported.
 - `class`: _(optional)_ Any CSS classes to assign to the image. Multiple classes should be separated with a space (`" "`).
+- `quality`: _(optional)_ JPEG or WebP quality of the image, in percent.  Only used when encoding JPEGs or WebPs; default value is `90`.
 - `extended_width_pct`: _(optional)_ The percentage by which the image's width should be expanded past it's default figure width, up to maximum configured pixel width. 
 
    Range is `0.0-1.0`, or `-1` for document width. 

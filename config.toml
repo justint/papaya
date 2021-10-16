@@ -89,11 +89,11 @@ env = "ZOLA_ENV"
 #    The name and url attributes are required if it is just a link.
 # 3. The order here determines the order of the top navigation bar.
 sections = [
-    { name = "projects", show_recent = true, recent_items = 3, recent_trans_key = "recent_projects", more_trans_key = "more_projects" },
-    { name = "blog", show_recent = true, recent_items = 3, recent_trans_key = "recent_blog_posts", more_trans_key = "more_blog_posts" },
+    { name = "projects", url = "$LANG_BASE_URL/projects", show_recent = true, recent_items = 3, recent_trans_key = "recent_projects", more_trans_key = "more_projects" },
+    { name = "blog", url = "$LANG_BASE_URL/blog", show_recent = true, recent_items = 3, recent_trans_key = "recent_blog_posts", more_trans_key = "more_blog_posts" },
     # tag is not a zola section, it's just a link.
     { name = "tag", url = "$LANG_BASE_URL/tags" },
-    { name = "about", show_recent = false },
+    { name = "about", url = "$LANG_BASE_URL/about", show_recent = false },
 ]
 
 [extra.images]
