@@ -1,5 +1,7 @@
 {% macro social_links(social_config) %}
 <span class="icon-text">
+  {% set base_url = get_url(path="", lang=lang) %}
+
   {% if social_config.twitter %}
   <a href="https://twitter.com/{{ social_config.twitter }}" aria-label="Open {{ social_config.twitter }} Twitter" target="_blank">
     <span class="icon is-large">
@@ -24,6 +26,30 @@
   </a>
   {% endif %}
 
+  {% if social_config.zhihu %}
+  <a href="https://www.zhihu.com/people/{{ social_config.zhihu }}" aria-label="Open {{ social_config.zhihu }} Zhihu" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-zhihu fa-lg" aria-hidden="true" title="知乎"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.weibo %}
+  <a href="https://weibo.com/u/{{ social_config.weibo }}" aria-label="Open {{ social_config.weibo }} Weibo" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-weibo fa-lg" aria-hidden="true" title="新浪微博"></i>
+    </span>
+  </a>
+  {% endif %}
+
+  {% if social_config.bilibili %}
+  <a href="https://space.bilibili.com/{{ social_config.bilibili }}" aria-label="Open {{ social_config.bilibili }} bilibili" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-bilibili fa-lg" aria-hidden="true" title="bilibili"></i>
+    </span>
+  </a>
+  {% endif %}
+
   {% if social_config.email %}
   <a href="mailto:{{ social_config.email }}" aria-label="Email {{ social_config.email }}" target="_blank">
     <span class="icon is-large">
@@ -33,11 +59,21 @@
   {% endif %}
 
   {% if config.generate_feed %}
-  <a href="{{ config.base_url }}/{{ config.feed_filename }}" aria-label="Open atom xml feed" target="_blank">
+  <a href="{{ base_url }}/{{ config.feed_filename }}" aria-label="Open atom xml feed" target="_blank">
     <span class="icon is-large">
       <i class="fas fa-rss fa-lg" aria-hidden="true" title="atom xml feed"></i>
     </span>
   </a>
+  {% endif %}
+
+  {% if social_config.other %}
+  {% for social in social_config.other %}
+  <a href={{ social.url }} aria-label="Open {{ social.name }}" target="_blank">
+    <span class="icon is-large">
+      <i class="{{ social.font_awesome }} fa-lg" aria-hidden="true" title={{ social.name }}></i>
+    </span>
+  </a>
+  {% endfor %}
   {% endif %}
 </span>
 {% endmacro %}

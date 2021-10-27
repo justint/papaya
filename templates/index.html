@@ -1,37 +1,35 @@
 {% import "macros/page.html" as page_macros %}
 {% extends "base.html" %}
 
-
 {% block content %}
 <main id="main" class="index" tabindex="-1">
     <section>
         {% set banner = resize_image(path="/static/banner.jpg", width=672, op="fit_width") %}
         <img src="{{ banner.url }}" class="index-banner" alt="A misty forest."/>
         <p>
-            A clean Zola theme for blogging and projects.
+            {{ config.description }}
         </p>
     </section>
     <section class="index-columns">
+    {% for subsec in config.extra.menu_items | filter(attribute="show_recent", value=true) %}
         <section class="index-listing">
             <h2>
-                Recent projects
+                {{ trans(key=subsec.recent_trans_key, lang=lang) }}
             </h2>
-            {% set section = get_section(path="projects/_index.md") %}
-            {% for page in section.pages | slice(end=2) %}
-            {{ page_macros::project_listing(page=page) }}
+            {% if section.subsections is containing(subsec.name ~ "/_index." ~ lang ~ ".md") %}
+                {% set subsec_path = subsec.name ~ "/_index." ~ lang ~ ".md" %}
+                {% set subsec_link_path = lang ~ "/" ~ subsec.name ~ "/" %}
+            {% else %}
+                {% set subsec_path = subsec.name ~ "/_index.md" %}
+                {% set subsec_link_path = subsec.name ~ "/" %}
+            {% endif %}
+            {% set subsec_section = get_section(path=subsec_path) %}
+            {% for page in subsec_section.pages | slice(end=subsec.recent_items) %}
+                {{ page_macros::page_listing(page=page) }}
             {% endfor %}
-            <p class="read-more"><a href="projects/">more projects ≫</a></p>
+            <p class="read-more"><a href={{ subsec_link_path }}>{{ trans(key=subsec.more_trans_key, lang=lang) }} ≫</a></p>
         </section>
-        <section class="index-listing">
-            <h2>
-                Recent blog posts
-            </h2>
-            {% set section = get_section(path="blog/_index.md") %}
-            {% for page in section.pages | slice(end=2) %}
-            {{ page_macros::page_listing(page=page) }}
-            {% endfor %}
-            <p class="read-more"><a href="blog/">more blog posts ≫</a></p>
-        </section>
+    {% endfor %}
     </section>
 </main>
 {% endblock content %}

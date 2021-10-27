@@ -1,6 +1,6 @@
 +++
 title = "What is Zola"
-date = 2019-01-06
+date = 2021-10-03
 
 [taxonomies]
 tags = ["rust", "other"]
@@ -40,7 +40,7 @@ Tables aren't part of the core Markdown spec, but Zola supports them out-of-the-
     Bob | 27
   Alice | 23
 
-## Inline Markdown within tables
+### Inline Markdown within tables
 
 | Inline&nbsp;&nbsp;&nbsp;     | Markdown&nbsp;&nbsp;&nbsp;  | In&nbsp;&nbsp;&nbsp;                | Table      |
 | ---------- | --------- | ----------------- | ---------- |

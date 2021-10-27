@@ -1,12 +1,12 @@
 {% import "macros/page.html" as page_macros %}
 {% extends "index.html" %}
 
-{% block title %}Tag: #{{ term.name }} - {{ config.title }}{% endblock title%}
+{% block title %}{{ trans(key="tag", lang=lang) }}: #{{ term.name }} - {{ config.title }}{% endblock title%}
 
 {% block content %}
-<h1>Tag: #{{ term.name }}</h1>
+<h1>{{ trans(key="tag", lang=lang) }}: #{{ term.name }}</h1>
 <div class="article-info">
-    <a href="{{ get_url(path="/tags") }}">To all tags</a>
+    <a href="../">{{ trans(key="to_all_tags", lang=lang) }}</a>
 </div>
 
 {% for page in term.pages %}

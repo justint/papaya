@@ -62,6 +62,7 @@ main {
     justify-content: space-between;
 }
 .index-listing {
+    min-width: 48%;
     max-width: 48%;
     flex-grow: 1;
 }
@@ -312,7 +313,7 @@ article header h1 {
 
     li {
         display: inline;
-        margin-right: 1em;
+        margin-right: 0.2em;
     }
     li:last-of-type {
         margin-right: 0;
@@ -327,7 +328,7 @@ article header h1 {
 
     li {
         display: inline;
-        margin-right: 1em;
+        margin-right: 0.2em;
     }
 }
 

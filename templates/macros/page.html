@@ -2,21 +2,21 @@
 {% macro page_info(page) %}
     <div class="article-info">
         {% if page.date %}
-        {% set reading_time = "◦ " ~ page.reading_time ~ " min" %}
-        <div class="article-date">{{ page.date | date(format=config.extra.papaya_date_format) }} {{ reading_time }} ◦ </div>
+        {% set reading_time = "◦ " ~ page.reading_time ~ " " ~ trans(key="minute", lang=lang) %}
+        <div class="article-date">{{ page.date | date(format=trans(key="date_format", lang=lang)) }} {{ reading_time }} ◦ </div>
         {% endif %}
         <div class="article-taxonomies">
             {% if page.taxonomies.categories %}
                 <ul class="article-categories">
                     {% for cat in page.taxonomies.categories %}
-                    <li><a href="{{ get_taxonomy_url(kind="categories", name=cat) | safe }}">{{ cat }}</a></li>
+                    <li><a href="{{ get_taxonomy_url(kind="categories", name=cat, lang=lang) | safe }}">{{ cat }}</a></li>
                     {% endfor %}
                 </ul>
             {% endif %}
             {% if page.taxonomies.tags %}
                 <ul class="article-tags">
                     {% for tag in page.taxonomies.tags %}
-                    <li><a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">#{{ tag }}</a></li>
+                    <li><a href="{{ get_taxonomy_url(kind="tags", name=tag, lang=lang) | safe }}">#{{ tag }}</a></li>
                     {% endfor %}
                 </ul>
             {% endif %}
@@ -39,7 +39,7 @@
             </div>
             {% endif %}
         </a>
-        
+ 
         {{ self::page_info(page=page) }}
     </article>
 {% endmacro page_listing %}
@@ -48,12 +48,12 @@
     <div class="pagination">
         <div class="left pagination-item {% if not paginator.previous %}disabled{% endif %}">
             {% if paginator.previous %}
-            <a href="{{ paginator.previous }}">To newer posts</a>
+            <a href="{{ paginator.previous }}">{{ trans(key="prev_page", lang=lang) }}</a>
             {% endif %}
         </div>
         <div class="right pagination-item {% if not paginator.next %}disabled{% endif %}">
             {% if paginator.next %}
-            <a href="{{ paginator.next }}">To older posts</a>
+            <a href="{{ paginator.next }}">{{ trans(key="next_page", lang=lang) }}</a>
             {% endif %}
         </div>
     </div>
@@ -86,22 +86,22 @@
 {% macro project_info(page) %}
 <div class="article-info">
     {% if page.date %}
-    {% set reading_time = "◦ " ~ page.reading_time ~ " min" %}
-    <div class="article-date">{{ page.date | date(format=config.extra.papaya_date_format) }} {{ reading_time }}</div>
+    {% set reading_time = "◦ " ~ page.reading_time ~ " " ~ trans(key="minute", lang=lang) %}
+    <div class="article-date">{{ page.date | date(format=trans(key="date_format", lang=lang)) }} {{ reading_time }}</div>
     {% endif %}
     <div class="article-taxonomies">
         {% if page.taxonomies.categories %}
         ◦
         <ul class="article-categories">
             {% for cat in page.taxonomies.categories %}
-            <li><a href="{{ get_taxonomy_url(kind="categories", name=cat) | safe }}">{{ cat }}</a></li>
+            <li><a href="{{ get_taxonomy_url(kind="categories", name=cat, lang=lang) | safe }}">{{ cat }}</a></li>
             {% endfor %}
         </ul>
         {% endif %}
         {% if page.taxonomies.tags %}
         <ul class="article-tags">
             {% for tag in page.taxonomies.tags %}
-            <li><a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">#{{ tag }}</a></li>
+            <li><a href="{{ get_taxonomy_url(kind="tags", name=tag, lang=lang) | safe }}">#{{ tag }}</a></li>
             {% endfor %}
         </ul>
         {% endif %}
