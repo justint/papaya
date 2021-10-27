@@ -15,8 +15,8 @@ A clean [Zola](https://getzola.org) theme for blogging and projects, forked from
 - Blog posts
 - Project pages
 - Categories and tags
-- Multilanguage support
-- Customizable sections
+- Multilingual support
+- Customizable sections and navigation menu links
 - Featured images for posts/pages
 - Smart image embedding shortcode (`{{ img() }}`)
 - GitHub repository star/fork counts
@@ -76,8 +76,8 @@ A clean [Zola](https://getzola.org) theme for blogging and projects, forked from
 Here are the customizable features of Papaya: 
 
 - [Project categories](#project-categories)
-- [Multilanguage support](#mutilanguage-support)
-- [Custom section and navigation menu links](#custom-section-and-navigation-menu-links)
+- [Multilingual support](#multilingual-support)
+- [Custom sections and navigation menu links](#custom-sections-and-navigation-menu-links)
 - [Post/project date formats](#postproject-date-formats)
 - [Post/project featured images](#postproject-featured-images)
 - [Open Graph Protocol locale/profile information](#open-graph-protocol-localeprofile-information)
@@ -121,13 +121,13 @@ categories = ["software"]
 
 The example project page above would be grouped into & displayed within the "Software" category of your projects page.
 
-### Mutilanguage support
+### Multilingual support
 
-Currently Zola has a basic i18n support, you can see this at [zola doc](https://www.getzola.org/documentation/content/multilingual/).
+Currently Zola has a basic internationalization (i18n) support, you can see this at [zola doc](https://www.getzola.org/documentation/content/multilingual/).
 
-Doing the follows to write a multilanguage site (English and Chinese in this example):
+To write a multilingual site, follow the steps below (English and Chinese in this example):
 
-1. Add `default_language` configuration, `[languages.zh]` and `[languages.en] section in your `config.toml`:
+1. Add a `default_language` configuration and `[languages.zh]` and `[languages.en]` sections to your `config.toml`:
 
     ```toml
     default_language = "en"
@@ -141,9 +141,9 @@ Doing the follows to write a multilanguage site (English and Chinese in this exa
     description = "中文描述"
     ```
 
-    Under `[languages.zh]` section you can override default configurations like title, description.
+    Under the `[languages.zh]` section you can override default configurations like `title`, `description`, etc.
 
-2. Add translations of all keywords in `[langauges.zh.translations]` and `languages.en.translations]` section:
+2. Add translations of all keywords in `[languages.zh.translations]` and `languages.en.translations]` sections (see Papaya's [`config.toml`](config.toml) for a listing of all keywords):
 
     ```toml
     [languages]
@@ -173,8 +173,15 @@ Doing the follows to write a multilanguage site (English and Chinese in this exa
     ...
     ```
 
-3. Add `_index.zh.md` to every section, e.g., add `content/blog/_index.zh.md` and `content/projects/_index.zh.md`. `content/about` is not a zola section, it is just a page, doesn't contain any other page, so it didn't contain a `_index.md`, instead it contains a `index.md` (see [zola doc](https://www.getzola.org/documentation/content/page/)), so if you want to translate this page, you should add a `index.zh.md`, but this is not necessary.
-4. Add file `content/categories.zh.json`, for example:
+3. Add a `_index.zh.md` file into every section. 
+
+   For example: add `content/blog/_index.zh.md` and `content/projects/_index.zh.md`. 
+
+4. Provide a `{page-name}.zh.md` (or `index.zh.md` into the page's directory, if it has one) for every page you'd like to translate.
+
+   For example: add `content/blog/what-is-zola.zh.md` and `content/blog/blog-with-image/index.zh.md`.
+
+6. Add a `content/categories.zh.json` file. For example:
 
     ```json
     {
@@ -183,20 +190,41 @@ Doing the follows to write a multilanguage site (English and Chinese in this exa
     }
     ```
 
-Now you will have a blog with both English and Chinese! Since `default_language` in `config.toml` is set to "en", by visiting `base_url` you will see the English version of this blog. You can visit the Chinese version by visiting `base_url/zh`.
+Now you will have a website that supports both English and Chinese! Since `default_language` in `config.toml` is set to "en", by visiting `{base_url}` you will see the English version of this blog. You can visit the Chinese version by visiting `{base_url}/zh`.
 
-A page (post or project) can be avaiable in both language or only in one language, and it's not necessary that a page is avaiable in the default language.
+A page (post or project) can be available in both languages or only in one language, and it's not necessary that a page is available in the default language.
 
-### Custom section and navigation menu links
+### Custom sections and navigation menu links
 
-A section is created whenever a directory (or subdirectory) in the content section contains an `_index.md` file, see [zola docs](https://www.getzola.org/documentation/content/section/).
+The navigation menu is constructed from a list of `menu_items` in your `config.toml`. For example:
+```toml
+[extra]
 
-Papaya has three sections by default: `projects`, `blog` and `about` (actually `about` is not a zola section, because it is a single page). You can add additional sections or change section names. For example, you can add a section called **Diary**, in order to add this section, you need to:
+menu_items = [
+   { name = "projects", url = "$LANG_BASE_URL/projects", show_recent = true, recent_items = 3, recent_trans_key = "recent_projects", more_trans_key = "more_projects" },
+   { name = "blog", url = "$LANG_BASE_URL/blog", show_recent = true, recent_items = 3, recent_trans_key = "recent_blog_posts", more_trans_key = "more_blog_posts" },
+   { name = "tags", url = "$LANG_BASE_URL/tags" },
+   { name = "about", url = "$LANG_BASE_URL/about" },
+]
+```
 
-1. Create a directory called `diary` in `content/`
-2. Create `_index.md` inside `content/diary`, for example:
+A `menu_item` can be one of two things:
 
-    ```markdown
+- **a link to a section.** Section links can be optionally configured to display its most recently authored items on your index page. See [Configuring section menu items](#configuring-section-menu-items).
+
+- **a link to a URL.** See [Configuring URL menu items](#configuring-url-menu-items)
+
+#### Configuring section menu items
+
+A section is created whenever a directory (or subdirectory) in the content section contains an `_index.md` file; see the [Zola docs on sections](https://www.getzola.org/documentation/content/section/). 
+
+Papaya has two sections by default: `projects` and `blog`. You can add additional sections or change section names.  For example, you can add a section called _Diary_. In order to add this section, you need to:
+
+1. Create a directory called `diary` in `content/`.
+
+2. Create an `_index.md` inside `content/diary/`, for example:
+
+    ```toml
     +++
     title = "Diary"
     render = true
@@ -205,17 +233,56 @@ Papaya has three sections by default: `projects`, `blog` and `about` (actually `
     +++
     ```
 
-3. In your `config.toml` under the `[extra]` section adds the following item to key `sections`:
+Sections can be added to the navigation menu, and optionally configured to display its most recently authored items on your index page. To add your section to the navigation menu:
+
+1. In your `config.toml` under the `[extra]` section, add your section to the `menu_items`:
 
     ```toml
     [extra]
-    sections = [
+    menu_items = [
         ...
-        { name = "diary", show_recent = true, recent_items = 3, recent_trans_key = "recent_diary", more_trans_key = "more_diary" }
+        { name = "diary", url = "$LANG_BASE_URL/diary" }
     ]
     ```
+   
+2. In your `config.toml` under the `[languages.<code>.translations]` section, add your section name translation keys:
 
-4. In `config.toml` under the `[languages.<code>.translations]` section adds the following item:
+   ```toml
+   [languages]
+   
+   [languages.en]
+   
+   [languages.en.translations]
+   diary = "Diary"
+   
+   [languages.zh]
+
+   [languages.zh.translations]
+   diary = "日记"
+   ```
+
+   This will add a simple hyperlink to your new _Diary_ section in the navigation menu.
+
+To also display recently authored items from your _Diary_ section on your index page:
+
+1. Add the following attributes to your menu item:
+
+   - `show_recent`: Adds the section's recent items listing to your index page.
+   - `recent_items`: Number of recent items to display.
+   - `recent_trans_key`: Translation key for the recent items listing title text.
+   - `more_trans_key`: Translation key for the hyperlink text to the section.
+
+   For example:
+
+   ```toml
+   [extra]
+   menu_items = [
+       ...
+       { name = "diary", url = "$LANG_BASE_URL/diary", show_recent = true, recent_items = 3, recent_trans_key = "recent_diary", more_trans_key = "more_diary" }
+   ]
+   ```
+
+2. In your `config.toml` under the `[languages.<code>.translations]` section, add your section name, `recent_trans_key`, and `more_trans_key` translation keys:
 
     ```toml
     [languages]
@@ -234,10 +301,12 @@ Papaya has three sections by default: `projects`, `blog` and `about` (actually `
     recent_diary = "近期日记"
     more_diary = "更多日记"
     ```
+   
+   This will add both a hyperlink to your new _Diary_ section in the navigation menu, and a listing of the three most recent items from your _Diary_ section on your index page.
 
-After that you should see `Diary` appeared in the navigation menu.
+#### Configuring URL menu items
 
-If you want to add a custom link in the navigation menu, you can add a special section in the `sections` configuration, for example:
+If you want to add a simple link to the navigation menu, add an item with a `name` and `url`. For example:
 
 ```toml
 [extra]
@@ -247,7 +316,7 @@ sections = [
 ]
 ```
 
-As the same with the diary example, the `name` attribute of section specifies the corresponding translation key:
+A translation key for your link's `name` must be added into your `config.toml`:
 
 ```toml
 [languages]
@@ -267,7 +336,7 @@ If you include `$BASE_URL` in the URL of a link it will be replaced with the bas
 
 ### Post/project date formats
 
-You can have different date formats in different language. You need to set the `date_format` value in every langauge's translation section.
+You can have different date formats in different languages. You need to set the `date_format` value in every langauge's translation section.
 
 Example:
 
@@ -340,13 +409,10 @@ Example:
 email = "papaya@tiliqua.sp"
 github = "papaya"
 linkedin = "papayatiliqua"
-twitter = ""
-zhihu = ""
-weibo = ""
-bilibili = ""
+twitter = "papayathehisser"
 ```
 
-If you want to add some custom social websites, you can add them to `other`:
+If you want to include other custom social websites, you can add them to `other`:
 
 Example:
 
@@ -357,7 +423,7 @@ other = [
 ]
 ```
 
-`font_awesome` attribute specified the font awesome classes, you can find them in [Font Awesome](https://fontawesome.com/). Be carefull, different version of font awesome may include different sets of icons, you can change the version of font awesome by changing CDN in `[extra.cdn]` section:
+The `font_awesome` attribute specifies the Font Awesome classes; you can find them in [Font Awesome](https://fontawesome.com/). Be aware that different versions of Font Awesome may include different sets of icons; you can change your version of Font Awesome by updating the CDN path in the `[extra.cdn]` section:
 
 ```toml
 [extra]
@@ -378,7 +444,10 @@ You can use `./<image-path>` to specify the relative path of image which is rela
 
 ### Arguments
 
-- `path`: The path to the image relative to the `content` directory in the [directory structure](https://www.getzola.org/documentation/getting-started/directory-structure/).
+- `path`: The path to the image. It can be either:
+  - a full path (eg: `https://somesite.com/my-image.jpg`), 
+  - relative to the `content` directory in the [directory structure](https://www.getzola.org/documentation/getting-started/directory-structure/) (eg: `@/projects/project-1/my-image.jpg`), or
+  - relative to the current markdown file (eg: `./my-image.jpg`).
 - `alt`: _(optional)_ The alternate text for the image.
 - `caption`: _(optional)_ A caption for the image. Text/HTML/Tera templates supported.
 - `class`: _(optional)_ Any CSS classes to assign to the image. Multiple classes should be separated with a space (`" "`).

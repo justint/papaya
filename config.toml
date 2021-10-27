@@ -1,13 +1,21 @@
 # The URL the site will be built for
 base_url = "https://justintennant.me/papaya"
+
 title = "Papaya"
 description = "A clean Zola theme for blogging and projects"
 default_language = "en"
+
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
-# Whether to build a search index to be used later on by a JavaScript library
+
+# When set to "true", a search index is built from the pages and section
+# content for `default_language`.
 build_search_index = false
+
+# When set to "true", a feed is automatically generated.
 generate_feed = true
+
+# The taxonomies to be rendered for the site and their configuration of the default languages
 taxonomies = [
     { name = "tags", rss = true },
     { name = "categories", rss = true },
@@ -16,8 +24,9 @@ taxonomies = [
 [markdown]
 # When set to "true", all code blocks are highlighted.
 highlight_code = true
+
 # The theme to use for code highlighting.
-# See below for list of allowed values.
+# See Zola configuration docs for list of allowed values.
 highlight_theme = "material-light"
 
 [languages]
@@ -82,17 +91,13 @@ date_format = "%Y 年 %m 月 %d 日"
 [extra]
 # Development environment. Used by the page macros to load remote content only when in "prod" mode
 env = "ZOLA_ENV"
-# List of zola sections. Also used to construct navigation bar.
-# 1. The name, recent_trans_key, more_trans_key attributes contain the corresponding
-#    translation items in the [languages.<code>.translations] table.
-# 2. The name and show_recent attributes are required if it is a zola section;
-#    The name and url attributes are required if it is just a link.
-# 3. The order here determines the order of the top navigation bar.
-sections = [
+
+# List of Papaya navigational menu items. Used to construct the navigation bar. See the README for item schema.
+menu_items = [
     { name = "projects", url = "$LANG_BASE_URL/projects", show_recent = true, recent_items = 3, recent_trans_key = "recent_projects", more_trans_key = "more_projects" },
     { name = "blog", url = "$LANG_BASE_URL/blog", show_recent = true, recent_items = 3, recent_trans_key = "recent_blog_posts", more_trans_key = "more_blog_posts" },
     # tag is not a zola section, it's just a link.
-    { name = "tag", url = "$LANG_BASE_URL/tags" },
+    { name = "tags", url = "$LANG_BASE_URL/tags" },
     { name = "about", url = "$LANG_BASE_URL/about", show_recent = false },
 ]
 

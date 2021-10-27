@@ -39,14 +39,9 @@
         <nav>
             <ul>
             {% block nav_bar %}
-            {% for subsec in config.extra.sections %}
-            {% if subsec is containing("show_recent") %}
-                {% set subsec_url = base_url ~ "/" ~ subsec.name %}
-                <li><a {% if current_url and current_url is starting_with(subsec_url) %}class="active"{% endif %} href="{{ subsec_url }}">{{ trans(key=subsec.name, lang=lang) }}</a></li>
-            {% else %}
+            {% for subsec in config.extra.menu_items %}
                 {% set link_url = subsec.url | replace(from="$BASE_URL", to=config.base_url) | replace(from="$LANG_BASE_URL", to=base_url) %}
                 <li><a {% if current_url and current_url is starting_with(link_url) %}class="active"{% endif %} href="{{ link_url }}">{{ trans(key=subsec.name, lang=lang) }}</a></li>
-            {% endif %}
             {% endfor %}
             {% endblock nav_bar %}
             </ul>
