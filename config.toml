@@ -34,6 +34,8 @@ highlight_theme = "material-light"
 [languages.en]
 title = "Papaya"
 description = "A clean Zola theme for blogging and projects"
+generate_feed = true
+feed_filename = "atom.xml"
 
 [languages.en.translations]
 projects = "Projects"
