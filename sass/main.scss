@@ -280,6 +280,10 @@ article header h1 {
     }
 }
 
+article header h2 {
+    font-size: 0.9em;
+}
+
 .article-info {
     font-size: 0.75em;
     color: $a11y-gray;
@@ -555,11 +559,10 @@ footer {
 
     header {
         nav {
-            margin-top: 1em;
+            margin-top: 0em;
             max-width: 100%;
             text-align: center;
             background: #fafafa;
-            padding: 0.5em 0;
         }
 
         nav {
@@ -570,7 +573,7 @@ footer {
             }
 
             li {
-                padding: 1em;
+                padding: 0.5em 1em;
             }
 
             a:first-of-type {
