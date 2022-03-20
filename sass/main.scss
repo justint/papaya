@@ -11,6 +11,7 @@
     --icon-hover-color: var(--link-hover-color);
     --icon-color: var(--text-color);
     --code-background: rgb(247, 248, 250);
+    --table-header-background-color: var(--header-background-color);
 }
 
 /* Basic */
@@ -136,18 +137,18 @@ table {
 }
 
 thead {
-    background: lightgrey;
+    background: var(--table-header-background-color);
 }
 
 th, td {
     padding: 0.5em 1em;
-    border: 1px double lightgrey;
+    border: 1px double var(--table-header-background-color);
 }
 
 /* Code */
 pre {
     padding: 1em;
-    background-color: #f1f1f1;
+    background-color: var(--code-background);
     max-width: 100%;
     overflow: auto;
 }
@@ -376,7 +377,7 @@ figcaption {
 
 .bordered {
     border: 3px solid var(--background-color);
-    box-shadow: 0 0 0 3px #fafafa;
+    box-shadow: 0 0 0 3px var(--header-background-color);
 }
 
 .read-more {
@@ -417,8 +418,12 @@ figcaption {
 
 .post-list {
     a {
-        color: var(--text);
+        color: var(--text-color);
         text-decoration: none;
+
+        .article-taxonomies {
+            color: var(--text-accent-color);
+        }
     }
 
     a:active,
@@ -480,7 +485,7 @@ figcaption {
 }
 
 .pagination-item {
-    background: #fafafa;
+    background: var(--header-background-color);
     padding: 0.75em 0.75em;
 }
 
@@ -626,9 +631,12 @@ p > code {
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background-color: rgb(25, 24, 24);
-        --header-background-color: rgb(30, 29, 29);
-        --text-color: rgb(192, 192, 192);
+        --background-color: rgb(24, 24, 24);
+        --header-background-color: rgb(28, 28, 28);
+        --text-color: rgb(217, 217, 217);
+        --text-accent-color: rgb(130, 130, 130);
+        --border-color: rgb(66, 66, 66);
+        --link-color: rgb(71, 160, 247);
         --code-background: rgb(32, 32, 32);
     }
 
