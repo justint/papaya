@@ -17,8 +17,10 @@ generate_feed = true
 
 # The taxonomies to be rendered for the site and their configuration of the default languages
 taxonomies = [
-    { name = "tags", rss = true },
-    { name = "categories", rss = true },
+    { name = "tags", feed = true, lang = "en" },
+    { name = "tags", feed = true, lang = "zh" },
+    { name = "categories", feed = true, lang = "en" },
+    { name = "categories", feed = true, lang = "zh" },
 ]
 
 [markdown]
@@ -36,6 +38,10 @@ title = "Papaya"
 description = "A clean Zola theme for blogging and projects"
 generate_feed = true
 feed_filename = "atom.xml"
+taxonomies = [
+    { name = "tags", feed = true, lang = "en" },
+    { name = "categories", feed = true, lang = "en" },
+]
 
 [languages.en.translations]
 projects = "Projects"
@@ -63,9 +69,10 @@ date_format = "%B %e, %Y"
 title = "帕帕雅"
 description = "一个清新的 Zola 博客与项目模板"
 base_url = "https://justintennant.me/papaya/zh"
+generate_feed = true
 taxonomies = [
-    { name = "tags", rss = true },
-    { name = "categories", rss = true },
+    { name = "tags", feed = true, lang = "zh" },
+    { name = "categories", feed = true, lang = "zh" },
 ]
 
 [languages.zh.translations]
