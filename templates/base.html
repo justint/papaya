@@ -40,7 +40,7 @@
             <ul>
             {% block nav_bar %}
             {% for subsec in config.extra.menu_items %}
-                {% set link_url = subsec.url | replace(from="$BASE_URL", to=config.base_url) | replace(from="$LANG_BASE_URL/", to=base_url) %}
+                {% set link_url = subsec.url | replace(from="$BASE_URL", to=config.base_url) | replace(from="$LANG_BASE_URL", to=base_url) %}
                 <li><a {% if current_url and current_url is starting_with(link_url) %}class="active"{% endif %} href="{{ link_url }}">{{ trans(key=subsec.name, lang=lang) }}</a></li>
             {% endfor %}
             {% endblock nav_bar %}
