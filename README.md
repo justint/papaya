@@ -15,7 +15,7 @@ A clean [Zola](https://getzola.org) theme for blogging and projects, forked from
 - Blog posts
 - Project pages
 - Categories and tags
-- Multilingual support
+- Optional multilingual support
 - Customizable sections and navigation menu links
 - Featured images for posts/pages
 - Smart image embedding shortcode (`{{ img() }}`)
@@ -38,14 +38,13 @@ A clean [Zola](https://getzola.org) theme for blogging and projects, forked from
     theme = "papaya"
     ```
 
-3. This theme requires both the `tags` and `categories` taxonomies.
+3. Copy the following sections and keys (and their contents/values) from papaya's [`config.toml`](https://github.com/justint/papaya/blob/main/config.toml) and paste them into your site's `config.toml`:
 
-    ```toml
-    taxonomies = [
-        { name = "categories" },
-        { name = "tags" },
-    ]
-    ```
+   - `[languages]`
+     - `[languages.en]`
+     - `[languages.en.translations]`
+   - `[extra.cdn]`
+     - `font_awesome`
 
 4. In your `content` directory, add new `blog` and `projects` directories. Copy the `_index.md` file from Papaya's `content/blog` into your `content/blog`, and the `_index.md` and `categories.json` files from Papaya's `content/projects` into your `content/projects`.
  
@@ -123,7 +122,7 @@ The example project page above would be grouped into & displayed within the "Sof
 
 ### Multilingual support
 
-Currently Zola has a basic internationalization (i18n) support, you can see this at [zola doc](https://www.getzola.org/documentation/content/multilingual/).
+Currently Zola has basic internationalization (`i18n`) support, you can read more in [zola's Multilingual Sites doc](https://www.getzola.org/documentation/content/multilingual/).
 
 To write a multilingual site, follow the steps below (English and Chinese in this example):
 
