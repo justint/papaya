@@ -24,7 +24,8 @@
                 {% set subsec_link_path = subsec.name ~ "/" %}
             {% endif %}
             {% set subsec_section = get_section(path=subsec_path) %}
-            {% for page in subsec_section.pages | slice(end=subsec.recent_items) %}
+            {% set subsec_section_pages = subsec_section.pages | sort(attribute="date") | reverse %}
+            {% for page in subsec_section_pages | slice(end=subsec.recent_items) %}
                 {{ page_macros::page_listing(page=page) }}
             {% endfor %}
             <p class="read-more"><a href={{ subsec_link_path }}>{{ trans(key=subsec.more_trans_key, lang=lang) }} ≫</a></p>

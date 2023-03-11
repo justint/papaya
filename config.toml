@@ -1,8 +1,6 @@
 # The URL the site will be built for
 base_url = "https://justintennant.me/papaya"
 
-title = "Papaya"
-description = "A clean Zola theme for blogging and projects"
 default_language = "en"
 
 # Whether to automatically compile all Sass files in the sass directory
@@ -14,12 +12,6 @@ build_search_index = false
 
 # When set to "true", a feed is automatically generated.
 generate_feed = true
-
-# The taxonomies to be rendered for the site and their configuration of the default languages
-taxonomies = [
-    { name = "tags", rss = true },
-    { name = "categories", rss = true },
-]
 
 [markdown]
 # When set to "true", all code blocks are highlighted.
@@ -36,6 +28,11 @@ title = "Papaya"
 description = "A clean Zola theme for blogging and projects"
 generate_feed = true
 feed_filename = "atom.xml"
+# The taxonomies to be rendered for the site and their configuration of the default languages
+taxonomies = [
+    { name = "tags", feed = true, lang = "en" },
+    { name = "categories", feed = true, lang = "en" },
+]
 
 [languages.en.translations]
 projects = "Projects"
@@ -63,9 +60,11 @@ date_format = "%B %e, %Y"
 title = "帕帕雅"
 description = "一个清新的 Zola 博客与项目模板"
 base_url = "https://justintennant.me/papaya/zh"
+generate_feed = true
+# The taxonomies to be rendered for the site and their configuration of the default languages
 taxonomies = [
-    { name = "tags", rss = true },
-    { name = "categories", rss = true },
+    { name = "tags", feed = true, lang = "zh" },
+    { name = "categories", feed = true, lang = "zh" },
 ]
 
 [languages.zh.translations]
@@ -130,4 +129,4 @@ other = [
 
 # CDN links
 [extra.cdn]
-font_awesome = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+font_awesome = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"

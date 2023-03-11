@@ -3,7 +3,7 @@ description = "A clean Zola theme for blogging and projects"
 license = "MIT"
 homepage = "https://github.com/justint/papaya"
 # The minimum version of Zola required
-min_version = "0.14.0"
+min_version = "0.16.1"
 # An optional live demo URL
 demo = "https://justintennant.me/papaya"
 
