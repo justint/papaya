@@ -1,0 +1,17 @@
+@use "syntax-theme-dark";
+@use "syntax-theme-light";
+@use "dark";
+@use "light";
+
+:root {
+    @include light.theme($theme: light);
+    @include syntax-theme-light.light;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        @include dark.theme($theme: dark);
+        @include syntax-theme-dark.dark;
+    }
+}

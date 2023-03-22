@@ -1,19 +1,3 @@
-/* Variables */
-:root {
-    --background-color: #fff;
-    --header-background-color: rgb(250, 250, 250);
-    --text-color: #333;
-    --text-accent-color: #757575;
-    --border-color: #c3c3c3;
-    --link-color: #1d60a3;
-    --link-hover-color: #1da388;
-    --link-hover-line-color: #007884;
-    --icon-hover-color: var(--link-hover-color);
-    --icon-color: var(--text-color);
-    --code-background: rgb(247, 248, 250);
-    --table-header-background-color: var(--header-background-color);
-}
-
 /* Basic */
 html {
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
@@ -626,22 +610,4 @@ p > code {
   font-size: 85%;
   background-color: var(--code-background);
   border-radius: 6px;
-}
-
-/* Dark mode */
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background-color: rgb(24, 24, 24);
-        --header-background-color: rgb(28, 28, 28);
-        --text-color: rgb(217, 217, 217);
-        --text-accent-color: rgb(130, 130, 130);
-        --border-color: rgb(66, 66, 66);
-        --link-color: rgb(65, 136, 205);
-        --code-background: rgb(32, 32, 32);
-    }
-
-    .img-dark {
-        filter: invert(100%) hue-rotate(180deg);
-    }
 }
