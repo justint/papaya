@@ -32,6 +32,7 @@ A clean [Zola](https://getzola.org) theme for blogging and projects, forked from
 - Smart image embedding shortcode (`{{ img() }}`)
 - GitHub repository star/fork counts
 - [Open Graph Protocol](https://ogp.me/) tags
+- [Utterances](https://utteranc.es/) support
 - Social/contact links
 - 100% Google Lighthouse score
 
@@ -92,6 +93,7 @@ Here are the customizable features of Papaya:
 - [Post/project date formats](#postproject-date-formats)
 - [Post/project featured images](#postproject-featured-images)
 - [Open Graph Protocol locale/profile information](#open-graph-protocol-localeprofile-information)
+- [Utterances](#utterances)
 - [Social/contact links](#socialcontact-links)
 
 ### Project categories
@@ -414,6 +416,24 @@ last_name = "Tiliqua"
 gender = "female"
 username = "tiliquasp"
 ```
+
+### Utterances
+
+[Utterances](https://utteranc.es/) is a comments widget built on GitHub issues. When enabled, Papaya can display GitHub issues as comments on your blog posts.
+
+To enable:
+
+1. Follow instructions on the [utterances](https://utteranc.es/) website.
+
+2. Once you're at the "Enable Utterances" step, enter the following keys into your `config.toml`:
+
+   ```toml
+   [extra.utterances]
+   enabled = true
+   repo = "yourname/yourrepository" # put your repository's short path here
+   post_map = "pathname"
+   label = "utterances"
+   theme = "preferred-color-scheme"
 
 ### Social/contact links
 
