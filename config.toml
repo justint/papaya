@@ -19,7 +19,11 @@ highlight_code = true
 
 # The theme to use for code highlighting.
 # See Zola configuration docs for list of allowed values.
-highlight_theme = "material-light"
+highlight_theme = "css"
+highlight_themes_css = [
+  { theme = "material-dark", filename = "syntax-theme-dark.css" },
+  { theme = "material-light", filename = "syntax-theme-light.css" },
+]
 
 [languages]
 
@@ -92,6 +96,9 @@ date_format = "%Y 年 %m 月 %d 日"
 [extra]
 # Development environment. Used by the page macros to load remote content only when in "prod" mode
 env = "ZOLA_ENV"
+
+# Color theme mode. Options: light, dark, auto (automatically switch depending on OS/user agent settings)
+color_mode = "auto"
 
 # List of Papaya navigational menu items. Used to construct the navigation bar. See the README for item schema.
 menu_items = [

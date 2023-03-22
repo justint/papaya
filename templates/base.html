@@ -11,7 +11,9 @@
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
     <meta name="description" content="{{ config.description }}">
 
-    <link rel="stylesheet" href="{{ get_url(path="main.css", trailing_slash=false) }}">
+    {% set color_mode_css_path = config.extra.color_mode ~ ".css" %}
+    <link rel="stylesheet" href="{{ get_url(path="base.css", trailing_slash=false) }}">
+    <link rel="stylesheet" href="{{ get_url(path=color_mode_css_path, trailing_slash=false) }}">
 
     <link rel="preload" href={{ config.extra.cdn.font_awesome }} as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href={{ config.extra.cdn.font_awesome }}></noscript>

@@ -1,16 +1,3 @@
-/* Variables */
-$background-color: #fff;
-$border-color: #c3c3c3;
-
-$text-color: #333;
-
-$a11y-gray: #757575;
-
-$link-color: #1d60a3;
-$link-hover-color: #1da388;
-$link-hover-line-color: #007884;
-$icon-hover-color: $link-hover-color;
-
 /* Basic */
 html {
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
@@ -23,8 +10,8 @@ html {
 
 body {
     margin: 0;
-    background: $background-color;
-    color: $text-color;
+    background: var(--background-color);
+    color: var(--text-color);
     font-size: 16px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -44,7 +31,7 @@ nav,
 section,
 summary {
     display: block;
-}	
+}
 
 .container {
     max-width: 42em;
@@ -71,7 +58,7 @@ main {
     font-size: 0.8em;
     margin-block-start: 1em;
     margin-block-end: 0;
-    border-bottom: thin dotted $border-color;
+    border-bottom: thin dotted var(--border-color);
 }
 .index-banner {
     width: 100%;
@@ -97,7 +84,7 @@ h3 {
 /* Links */
 
 a {
-    color: $link-color;
+    color: var(--link-color);
     text-decoration: none;
 }
 
@@ -108,18 +95,18 @@ a:hover {
 
 a:hover,
 a:focus {
-    color: $link-hover-color;
-    border-bottom: 1px solid $link-hover-line-color;
+    color: var(--link-hover-color);
+    border-bottom: 1px solid var(--link-hover-line-color);
 }
 
 a:active {
-    color: $link-hover-color;
+    color: var(--link-hover-color);
     opacity: 0.9;
-    border-bottom: 1px solid $link-hover-line-color;
+    border-bottom: 1px solid var(--link-hover-line-color);
 }
 
 a.active {
-    color: $link-hover-color;
+    color: var(--link-hover-color);
 }
 
 /* Table */
@@ -134,18 +121,18 @@ table {
 }
 
 thead {
-    background: lightgrey;
+    background: var(--table-header-background-color);
 }
 
 th, td {
     padding: 0.5em 1em;
-    border: 1px double lightgrey;
+    border: 1px double var(--table-header-background-color);
 }
 
 /* Code */
 pre {
     padding: 1em;
-    background-color: #f1f1f1;
+    background-color: var(--code-background);
     max-width: 100%;
     overflow: auto;
 }
@@ -194,7 +181,7 @@ header {
     }
 
     h2 {
-        color: $a11y-gray;
+        color: var(--text-accent-color);
         font-size: 0.8em;
         margin: 0 0 0.8em 0;
         font-weight: normal;
@@ -219,7 +206,7 @@ header {
     }
 
     a {
-        color: #333;
+        color: var(--text-color);
     }
 }
 /* Anchor links */
@@ -276,7 +263,7 @@ article header h1 {
     a {
         border: none;
         text-decoration: none;
-        color: #333;
+        color: var(--text-color);
     }
 }
 
@@ -286,13 +273,13 @@ article header h2 {
 
 .article-info {
     font-size: 0.75em;
-    color: $a11y-gray;
+    color: var(--text-accent-color);
 
     a {
-        color: $a11y-gray;
+        color: var(--text-accent-color);
     }
     a:hover {
-        color: $link-hover-color;
+        color: var(--link-hover-color);
     }
 }
 
@@ -368,13 +355,13 @@ article img {
 
 figcaption {
     font-size: 0.75em;
-    color: $a11y-gray;
+    color: var(--text-accent-color);
     text-align: center;
 }
 
 .bordered {
-    border: 3px solid $background-color;
-    box-shadow: 0 0 0 3px #fafafa;
+    border: 3px solid var(--background-color);
+    box-shadow: 0 0 0 3px var(--header-background-color);
 }
 
 .read-more {
@@ -399,7 +386,7 @@ figcaption {
     .footnote-definition:first-of-type {
         margin-top: 1em;
         padding-top: 1em;
-        border-top: 1px dotted $border-color;
+        border-top: 1px dotted var(--border-color);
     }
 }
 
@@ -415,8 +402,12 @@ figcaption {
 
 .post-list {
     a {
-        color: $text-color;
+        color: var(--text-color);
         text-decoration: none;
+
+        .article-taxonomies {
+            color: var(--text-accent-color);
+        }
     }
 
     a:active,
@@ -426,18 +417,18 @@ figcaption {
 
     a:hover,
     a:focus {
-        color: $link-hover-color;
-        border-bottom: 1px solid $link-hover-line-color;
+        color: var(--link-hover-color);
+        border-bottom: 1px solid var(--link-hover-line-color);
     }
 
     a:active {
-        color: $link-hover-color;
+        color: var(--link-hover-color);
         opacity: 0.9;
-        border-bottom: 1px solid $link-hover-line-color;
+        border-bottom: 1px solid var(--link-hover-line-color);
     }
 
     a.active {
-        color: $link-hover-color;
+        color: var(--link-hover-color);
     }
 
     img {
@@ -474,11 +465,11 @@ figcaption {
 }
 
 .pagination {
-    text-align: center;   
+    text-align: center;
 }
 
 .pagination-item {
-    background: #fafafa;
+    background: var(--header-background-color);
     padding: 0.75em 0.75em;
 }
 
@@ -488,11 +479,11 @@ figcaption {
 
 .pagination-item {
     a {
-        color: #333333;
+        color: var(--text-color);
     }
 
     a:hover, a:focus {
-        color: $link-hover-color;
+        color: var(--link-hover-color);
         border-bottom: 0;
     }
 }
@@ -500,7 +491,7 @@ figcaption {
 /* Footer */
 
 footer {
-    border-top: thin dotted $border-color;
+    border-top: thin dotted var(--border-color);
     margin-top: 2em;
     font-size: 16px;
     text-align: center;
@@ -517,10 +508,10 @@ footer {
 
 .icon-text, .article-github {
     a {
-        color: #333333;
+        color: var(--icon-color);
     }
     a:hover {
-        color: $icon-hover-color;
+        color: var(--icon-hover-color);
         text-decoration: none;
         border-bottom: none;
 
@@ -562,7 +553,7 @@ footer {
             margin-top: 0em;
             max-width: 100%;
             text-align: center;
-            background: #fafafa;
+            background: var(--header-background-color);
         }
 
         nav {
@@ -588,4 +579,35 @@ footer {
     .index-listing {
         max-width: none;
     }
+}
+
+
+/* Anchor links */
+
+h1, h2, h3, h4, h5, h6  {
+  .zola-anchor {
+    all: initial;
+    visibility: hidden;
+  }
+
+  &:hover .zola-anchor {
+    all: initial;
+    cursor: pointer;
+    visibility: visible;
+  }
+
+  .zola-anchor-link {
+    vertical-align: middle;
+    display: inline-block;
+    fill: var(--text-color);
+  }
+}
+
+/* Inline code blocks */
+
+p > code {
+  padding: 0.2em 0.4em;
+  font-size: 85%;
+  background-color: var(--code-background);
+  border-radius: 6px;
 }

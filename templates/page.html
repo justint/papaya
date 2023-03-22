@@ -79,6 +79,18 @@
         {{ page_contents | safe }}
     </div>
     {% endblock page_contents %}
+
+    {% if config.extra.utterances.enabled %}
+    <div class="comments">
+        <script src="https://utteranc.es/client.js"
+            repo="{{ config.extra.utterances.repo }}"
+            issue-term="{{ config.extra.utterances.post_map }}"
+            label="{{ config.extra.utterances.label }}"
+            theme="{{ config.extra.utterances.theme }}"
+            crossorigin="anonymous"
+            async></script>
+    </div>
+    {% endif %}
 </article>
 
 {% endblock content %}

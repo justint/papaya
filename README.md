@@ -2,18 +2,29 @@
 
 A clean [Zola](https://getzola.org) theme for blogging and projects, forked from [Anpu](https://github.com/zbrox/anpu-zola-theme).
 
+## Preview
+
 **Demo site**: [https://justintennant.me/papaya/](https://justintennant.me/papaya/)
 
-![index](pics/index.png)
+![index light/dark](https://raw.githubusercontent.com/justint/papaya/main/pics/blendedindex.png)
 
-![projects](pics/projects.png)
+<p align="center">
+  <img alt="Light Projects" src="https://raw.githubusercontent.com/justint/papaya/main/pics/projects.png" width="45%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="Dark Projects" src="https://raw.githubusercontent.com/justint/papaya/main/pics/projects_dark.png" width="45%">
+</p>
 
-![project](pics/project.png)
+<p align="center">
+  <img alt="Light Project" src="https://raw.githubusercontent.com/justint/papaya/main/pics/project.png" width="45%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="Dark Project" src="https://raw.githubusercontent.com/justint/papaya/main/pics/project_dark.png" width="45%">
+</p>
 
 ## Features
 
 - Blog posts
 - Project pages
+- Automatic light/dark mode
 - Categories and tags
 - Optional multilingual support
 - Customizable sections and navigation menu links
@@ -21,7 +32,7 @@ A clean [Zola](https://getzola.org) theme for blogging and projects, forked from
 - Smart image embedding shortcode (`{{ img() }}`)
 - GitHub repository star/fork counts
 - [Open Graph Protocol](https://ogp.me/) tags
-- Social/contact links 
+- Social/contact links
 - 100% Google Lighthouse score
 
 ## Installation
@@ -75,8 +86,9 @@ A clean [Zola](https://getzola.org) theme for blogging and projects, forked from
 Here are the customizable features of Papaya: 
 
 - [Project categories](#project-categories)
+- [Light/dark mode](#lightdark-mode)
 - [Multilingual support](#multilingual-support)
-- [Custom sections and navigation menu links](#custom-sections-and-navigation-menu-links)
+- [Sections and navigation menu links](#sections-and-navigation-menu-links)
 - [Post/project date formats](#postproject-date-formats)
 - [Post/project featured images](#postproject-featured-images)
 - [Open Graph Protocol locale/profile information](#open-graph-protocol-localeprofile-information)
@@ -119,6 +131,12 @@ categories = ["software"]
 ```
 
 The example project page above would be grouped into & displayed within the "Software" category of your projects page.
+
+### Light/dark mode
+
+The Papaya theme can be set to `"light"`, `"dark"`, or `"auto"` mode in the `config.toml`.
+
+In `"auto"`, the light and dark modes are implicitly chosen by the `prefers-color-scheme` CSS media feature. The theme will switch automatically based on the viewer's OS or user agent setting.
 
 ### Multilingual support
 
@@ -193,7 +211,7 @@ Now you will have a website that supports both English and Chinese! Since `defau
 
 A page (post or project) can be available in both languages or only in one language, and it's not necessary that a page is available in the default language.
 
-### Custom sections and navigation menu links
+### Sections and navigation menu links
 
 The navigation menu is constructed from a list of `menu_items` in your `config.toml`. For example:
 ```toml
