@@ -244,9 +244,7 @@ main h1 {
 }
 
 /* Articles */
-
-
-article:not(:last-of-type) {
+article {
     padding-bottom: 0.5em;
 }
 
@@ -268,7 +266,8 @@ article header h1 {
 }
 
 article header h2 {
-    font-size: 0.9em;
+    font-size: 1em;
+    margin-bottom: 0.5em;
 }
 
 .article-info {
@@ -325,6 +324,10 @@ article header h2 {
 
 .article-github {
     display: inline-block;
+}
+
+article .content:not(.post-summary) {
+    margin-block-start: 1em;
 }
 
 /* Images */
