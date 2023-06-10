@@ -97,16 +97,19 @@ a:hover,
 a:focus {
     color: var(--link-hover-color);
     border-bottom: 1px solid var(--link-hover-line-color);
+    transition: all 0.1s linear;
 }
 
 a:active {
     color: var(--link-hover-color);
     opacity: 0.9;
     border-bottom: 1px solid var(--link-hover-line-color);
+    transition: all 0.1s linear;
 }
 
 a.active {
     color: var(--link-hover-color);
+    transition: all 0.1s linear;
 }
 
 /* Table */
@@ -279,6 +282,7 @@ article header h2 {
     }
     a:hover {
         color: var(--link-hover-color);
+        transition: all 0.1s linear;
     }
 }
 
@@ -422,16 +426,19 @@ figcaption {
     a:focus {
         color: var(--link-hover-color);
         border-bottom: 1px solid var(--link-hover-line-color);
+        transition: all 0.1s linear;
     }
 
     a:active {
         color: var(--link-hover-color);
         opacity: 0.9;
         border-bottom: 1px solid var(--link-hover-line-color);
+        transition: all 0.1s linear;
     }
 
     a.active {
         color: var(--link-hover-color);
+        transition: all 0.1s linear;
     }
 
     img {
@@ -488,6 +495,7 @@ figcaption {
     a:hover, a:focus {
         color: var(--link-hover-color);
         border-bottom: 0;
+        transition: all 0.1s linear;
     }
 }
 
