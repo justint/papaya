@@ -37,6 +37,6 @@
     {% endif %}
 {% endif %}
 <figure {% if extended_width_pct %}class="extended-figure"{% endif %}>
-    <img src="{% if resize %}{{ resized_image.url }}{% else %}{{ path }}{% endif %}" class="{% if class %}{{class}}{% endif %}" {% if alt %}alt="{{alt}}"{% endif %}/>
+    <img src="{% if resize %}{{ resized_image.url }}{% else %}{{ path }}{% endif %}" {% if class %}class="{{class}}"{% endif %} {% if alt %}alt="{{alt}}"{% endif %}/>
     {% if caption %}<figcaption>{{ caption | safe }}</figcaption>{% endif %}
 </figure>
