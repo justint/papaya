@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Papaya - other</title>
+    <subtitle>A clean Zola theme for blogging and projects</subtitle>
+    <link href="https://justintennant.me/papaya/tags/other/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://justintennant.me/papaya"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2021-10-04T00:00:00+00:00</updated>
+    <id>https://justintennant.me/papaya/tags/other/atom.xml</id>
+    <entry xml:lang="en">
+        <title>No summary</title>
+        <published>2021-10-04T00:00:00+00:00</published>
+        <updated>2021-10-04T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://justintennant.me/papaya/blog/no-summary/" type="text/html"/>
+        <id>https://justintennant.me/papaya/blog/no-summary/</id>
+        
+        <content type="html">&lt;p&gt;This page has no summary as described in the &lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;documentation&#x2F;content&#x2F;page&#x2F;#summary&quot;&gt;Zola documentation&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>What is Zola</title>
+        <published>2021-10-03T00:00:00+00:00</published>
+        <updated>2021-10-03T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://justintennant.me/papaya/blog/what-is-zola/" type="text/html"/>
+        <id>https://justintennant.me/papaya/blog/what-is-zola/</id>
+        
+        <summary type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. &lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>More on Skinks</title>
+        <published>2021-10-02T00:00:00+00:00</published>
+        <updated>2021-10-02T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://justintennant.me/papaya/blog/another-post/" type="text/html"/>
+        <id>https://justintennant.me/papaya/blog/another-post/</id>
+        
+        <summary type="html">&lt;p&gt;Many species are good burrowers. More species are terrestrial or fossorial (burrowing) than arboreal (tree-climbing) or aquatic species.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Relative Path of Image</title>
+        <published>2021-10-01T00:00:00+00:00</published>
+        <updated>2021-10-01T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://justintennant.me/papaya/blog/blog-with-image/" type="text/html"/>
+        <id>https://justintennant.me/papaya/blog/blog-with-image/</id>
+        
+        <summary type="html">&lt;p&gt;Use &lt;code&gt;img()&lt;&#x2F;code&gt; to specify the relative path of image.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>

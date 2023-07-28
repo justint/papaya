@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+    <title>帕帕雅 - rust</title>
+    <subtitle>一个清新的 Zola 博客与项目模板</subtitle>
+    <link href="https://justintennant.me/papaya/zh/tags/rust/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://justintennant.me/papaya"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2021-10-03T00:00:00+00:00</updated>
+    <id>https://justintennant.me/papaya/zh/tags/rust/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>什么是 Zola</title>
+        <published>2021-10-03T00:00:00+00:00</published>
+        <updated>2021-10-03T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://justintennant.me/papaya/zh/blog/what-is-zola/" type="text/html"/>
+        <id>https://justintennant.me/papaya/zh/blog/what-is-zola/</id>
+        
+        <summary type="html">&lt;p&gt;Zola 是一个 Rust 编写的静态博客框架。 &lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>

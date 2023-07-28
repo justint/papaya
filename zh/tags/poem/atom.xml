@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh">
+    <title>帕帕雅 - poem</title>
+    <subtitle>一个清新的 Zola 博客与项目模板</subtitle>
+    <link href="https://justintennant.me/papaya/zh/tags/poem/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://justintennant.me/papaya"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2021-10-02T00:00:00+00:00</updated>
+    <id>https://justintennant.me/papaya/zh/tags/poem/atom.xml</id>
+    <entry xml:lang="zh">
+        <title>再别康桥</title>
+        <published>2021-10-02T00:00:00+00:00</published>
+        <updated>2021-10-02T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://justintennant.me/papaya/zh/blog/zai-bie-kang-qiao/" type="text/html"/>
+        <id>https://justintennant.me/papaya/zh/blog/zai-bie-kang-qiao/</id>
+        
+        <summary type="html">&lt;p&gt;轻轻地我走了，正如我轻轻地来；我轻轻地招手，作别西天的云彩。&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>
