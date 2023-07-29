@@ -26,7 +26,7 @@
 
 {% macro page_listing(page) %}
     <article class="post-list">
-        <a href="{{ page.permalink }}">
+        <a href="{{ page.permalink | safe }}">
             <header>
                 <h3>
                     {{ page.title }}

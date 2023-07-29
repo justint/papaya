@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="{{ get_url(path="base.css", trailing_slash=false) }}">
     <link rel="stylesheet" href="{{ get_url(path=color_mode_css_path, trailing_slash=false) }}">
 
-    <link rel="preload" href={{ config.extra.cdn.font_awesome }} as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href={{ config.extra.cdn.font_awesome }}></noscript>
+    <link rel="preload" href="{{ config.extra.cdn.font_awesome | safe }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ config.extra.cdn.font_awesome | safe }}"></noscript>
 
     {% if config.generate_feed %}
     <link rel="alternate" type={% if config.feed_filename == "atom.xml" %}"application/atom+xml"{% else %}"application/rss+xml"{% endif %} title="RSS" href="{{ get_url(path=config.feed_filename) | safe }}">
@@ -36,14 +36,14 @@
     {% set base_url = get_url(path="", lang=lang) %}
     <header>
         <h1 class="site-header">
-            <a href="{{ base_url }}">{{ config.title }}</a>
+            <a href="{{ base_url | safe }}">{{ config.title }}</a>
         </h1>
         <nav>
             <ul>
             {% block nav_bar %}
             {% for subsec in config.extra.menu_items %}
                 {% set link_url = subsec.url | replace(from="$BASE_URL", to=config.base_url) | replace(from="$LANG_BASE_URL", to=base_url) %}
-                <li><a {% if current_url and current_url is starting_with(link_url) %}class="active"{% endif %} href="{{ link_url }}">{{ trans(key=subsec.name, lang=lang) }}</a></li>
+                <li><a {% if current_url and current_url is starting_with(link_url) %}class="active"{% endif %} href="{{ link_url | safe }}">{{ trans(key=subsec.name, lang=lang) }}</a></li>
             {% endfor %}
             {% endblock nav_bar %}
             </ul>
