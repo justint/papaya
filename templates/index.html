@@ -28,7 +28,7 @@
             {% for page in subsec_section_pages | slice(end=subsec.recent_items) %}
                 {{ page_macros::page_listing(page=page) }}
             {% endfor %}
-            <p class="read-more"><a href={{ subsec_link_path }}>{{ trans(key=subsec.more_trans_key, lang=lang) }} ≫</a></p>
+            <p class="read-more"><a href="{{ subsec_link_path | safe }}">{{ trans(key=subsec.more_trans_key, lang=lang) }} ≫</a></p>
         </section>
     {% endfor %}
     </section>

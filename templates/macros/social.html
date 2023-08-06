@@ -68,7 +68,7 @@
 
   {% if social_config.other %}
   {% for social in social_config.other %}
-  <a href={{ social.url }} aria-label="Open {{ social.name }}" target="_blank">
+  <a href="{{ social.url | safe }}" aria-label="Open {{ social.name }}" target="_blank">
     <span class="icon is-large">
       <i class="{{ social.font_awesome }} fa-lg" aria-hidden="true" title={{ social.name }}></i>
     </span>
