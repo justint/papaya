@@ -9,7 +9,7 @@
 <ul class="terms">
     {% for term in terms %}
     <li>
-        <a href="{{ term.permalink }}">
+        <a href="{{ term.permalink | safe }}">
         #{{ term.name }}
         </a>
         ({{ term.pages | length }})
