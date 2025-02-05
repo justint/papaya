@@ -11,7 +11,7 @@ compile_sass = true
 build_search_index = false
 
 # When set to "true", a feed is automatically generated.
-generate_feed = true
+generate_feeds = true
 
 [markdown]
 # When set to "true", all code blocks are highlighted.
@@ -30,8 +30,8 @@ highlight_themes_css = [
 [languages.en]
 title = "Papaya"
 description = "A clean Zola theme for blogging and projects"
-generate_feed = true
-feed_filename = "atom.xml"
+generate_feeds = true
+feed_filenames = ["atom.xml"]
 # The taxonomies to be rendered for the site and their configuration of the default languages
 taxonomies = [
     { name = "tags", feed = true, lang = "en" },
@@ -63,8 +63,7 @@ date_format = "%B %e, %Y"
 [languages.zh]
 title = "帕帕雅"
 description = "一个清新的 Zola 博客与项目模板"
-base_url = "https://justintennant.me/papaya/zh"
-generate_feed = true
+generate_feeds = true
 # The taxonomies to be rendered for the site and their configuration of the default languages
 taxonomies = [
     { name = "tags", feed = true, lang = "zh" },
